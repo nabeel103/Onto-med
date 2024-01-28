@@ -16,7 +16,7 @@ const Patient_dashboard = () => {
                 <caption class="p-5 text-lg font-semibold text-left rtl:text-right text-gray-100 bg-gray-900">
                     Diagnoses
 
-                    <p class="mt-1 text-sm font-normal text-gray-400">An overview of the progress of your most recent diagnoses.</p>
+                    <p class="mt-1 text-sm font-normal text-gray-400">An overview of the progress of your most recent diagnosis.</p>
                 </caption>
 
                 <thead class=" text-xs text-gray-500 uppercase bg-black border-b  border-gray-800 ">
@@ -79,7 +79,7 @@ const Patient_dashboard = () => {
             <table class="w-full text-sm text-left rtl:text-right text-white ">
                 <caption class="p-5 text-lg font-semibold text-left rtl:text-right text-gray-100 bg-gray-900">
                     Prescriptions
-                    <p class="mt-1 text-sm font-normal text-gray-400">A list of all your active prescriptions.</p>
+                    <p class="mt-1 text-sm font-normal text-gray-400">Your active prescription.</p>
                 </caption>
 
                 <thead class=" text-xs text-gray-500 uppercase bg-black border-b  border-gray-800 ">
@@ -91,10 +91,19 @@ const Patient_dashboard = () => {
                             #
                         </th>
                         <th class="px-6 py-3">
-                            Illness
+                            Disease
                         </th>
                         <th class="px-6 py-3">
                             Prescription
+                        </th>
+                        <th class="px-6 py-3">
+                            Type
+                        </th>
+                        <th class="px-6 py-3">
+                            Amount
+                        </th>
+                        <th class="px-6 py-3">
+                            Method
                         </th>
                     </tr>
                 </thead>
@@ -102,66 +111,29 @@ const Patient_dashboard = () => {
 
                 <tbody>
                     <tr class="bg-black border-b  border-gray-800 hover:bg-gray-900">
-                    <td class="px-6 py-4 text-right  text-gray-600 hover:text-green-600 ">
+                        <td class="px-6 py-4 text-right  text-gray-600 hover:text-green-600 ">
                             <Link to = "/patient/historydetail"><AiFillInfoCircle/></Link>
                         </td>
-                        <td class="px-6 py-4">
-                            1
-                        </td>
-                        
-                        <th class="px-6 py-4 font-medium">
-                            Typhoid
+                        <th class="px-6 py-4 font-light">
+                        1	
                         </th>
-                        <td class="px-6 py-4 font-light">
-                        Ciprofloxacin 500 mg, take one tablet orally every 12 hours for a duration of 14 days. Additionally, maintain adequate hydration with oral rehydration solutions and consume easily digestible foods. 
-                        </td>
-                    </tr>
-                    <tr class="bg-black border-b  border-gray-800 hover:bg-gray-900">
-                    <td class="px-6 py-4 text-right  text-gray-600 hover:text-green-600 ">
-                            <Link to = "/patient/historydetail"><AiFillInfoCircle/></Link>
-                        </td>
-                        <td class="px-6 py-4">
-                            1
-                        </td>
-                        
-                        <th class="px-6 py-4 font-medium">
-                            Typhoid
+                        <th class="px-6 py-4 font-light">
+                        Typhoid
                         </th>
-                        <td class="px-6 py-4 font-light">
-                        Ciprofloxacin 500 mg, take one tablet orally every 12 hours for a duration of 14 days. Additionally, maintain adequate hydration with oral rehydration solutions and consume easily digestible foods. 
-                        </td>
-                    </tr>
-                    <tr class="bg-black border-b  border-gray-800 hover:bg-gray-900">
-                    <td class="px-6 py-4 text-right  text-gray-600 hover:text-green-600 ">
-                            <Link to = "/patient/historydetail"><AiFillInfoCircle/></Link>
-                        </td>
-                        <td class="px-6 py-4">
-                            1
-                        </td>
-                        
-                        <th class="px-6 py-4 font-medium">
-                            Typhoid
+                        <th class="px-6 py-4 font-light">
+                        Rope skipping	
                         </th>
-                        <td class="px-6 py-4 font-light">
-                        Ciprofloxacin 500 mg, take one tablet orally every 12 hours for a duration of 14 days. Additionally, maintain adequate hydration with oral rehydration solutions and consume easily digestible foods. 
-                        </td>
-                    </tr>
-                    <tr class="bg-black border-b  border-gray-800 hover:bg-gray-900">
-                    <td class="px-6 py-4 text-right  text-gray-600 hover:text-green-600 ">
-                            <Link to = "/patient/historydetail"><AiFillInfoCircle/></Link>
-                        </td>
-                        <td class="px-6 py-4">
-                            1
-                        </td>
-                        
-                        <th class="px-6 py-4 font-medium">
-                            Typhoid
+                        <th class="px-6 py-4 font-light">
+                        Exercise
                         </th>
-                        <td class="px-6 py-4 font-light">
-                        Ciprofloxacin 500 mg, take one tablet orally every 12 hours for a duration of 14 days. Additionally, maintain adequate hydration with oral rehydration solutions and consume easily digestible foods. 
-                        </td>
-                    </tr>
+                        <th class="px-6 py-4 font-light">
+                        20 per day
+                        </th>
+                        <th class="px-6 py-4 font-light">
+                        Quick
 
+                        </th>
+                    </tr>
                 </tbody>
             </table>
         </div>

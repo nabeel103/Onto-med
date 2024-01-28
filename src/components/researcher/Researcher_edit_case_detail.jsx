@@ -13,41 +13,7 @@ const Researcher_edit_case_detail = () => {
       </div>
 
 
-      <div class="relative overflow-x-auto w-[90%] max-w-[850px] mx-auto">
-            <table class="w-full text-sm text-left rtl:text-right text-white ">
 
-                <thead class=" text-xs text-gray-500 uppercase bg-black border-b  border-gray-800 ">
-                    <tr>
-                        <th class="px-6 py-3">
-                            Diagnosis
-                        </th>
-                        <th class="px-6 py-3">
-                            Symptoms
-                        </th>
-                        <th class="px-6 py-3">
-                            Prescription
-                        </th>
-                    </tr>
-                </thead>
-
-
-                <tbody>
-                    <tr class="bg-black border-b  border-gray-800 hover:bg-gray-900">
-                        <th class="px-6 py-4 font-medium">
-                            Typhoid
-                        </th>
-                        <td class="px-6 py-4 font-light">
-                            High fever, sore body, abdominal pain
-                        </td>
-                        <td class="px-6 py-4 font-light">
-                            Ciprofloxacin 500 mg, take one tablet orally every 12 hours for a duration of 14 days. Additionally, maintain adequate hydration with oral rehydration solutions and consume easily digestible foods.
-                        </td>
-                    </tr>
-
- 
-                </tbody>
-            </table>
-        </div>
 
     
         <form class="max-w-[800px] mx-auto flex-col">

@@ -71,7 +71,21 @@ const Patient_history_detail = () => {
                 <tbody>
                     <tr class="bg-black border-b  border-gray-800 hover:bg-gray-900">
                         <th class="px-6 py-4 font-light">
-                        High fever, sore body, abdominal pain
+                        High fever
+                        </th>
+                    </tr>
+                </tbody>
+                <tbody>
+                    <tr class="bg-black border-b  border-gray-800 hover:bg-gray-900">
+                        <th class="px-6 py-4 font-light">
+                        Sore body
+                        </th>
+                    </tr>
+                </tbody>
+                <tbody>
+                    <tr class="bg-black border-b  border-gray-800 hover:bg-gray-900">
+                        <th class="px-6 py-4 font-light">
+                        Abdominal pain
                         </th>
                     </tr>
                 </tbody>
@@ -86,13 +100,31 @@ const Patient_history_detail = () => {
                         <th class="px-6 py-3">
                             Prescription
                         </th>
+                        <th class="px-6 py-3">
+                            Type
+                        </th>
+                        <th class="px-6 py-3">
+                            Amount
+                        </th>
+                        <th class="px-6 py-3">
+                            Method
+                        </th>
                     </tr>
                 </thead>
 
                 <tbody>
                     <tr class="bg-black border-b  border-gray-800 hover:bg-gray-900">
                         <th class="px-6 py-4 font-light">
-                        Ciprofloxacin 500 mg, take one tablet orally every 12 hours for a duration of 14 days. Additionally, maintain adequate hydration with oral rehydration solutions and consume easily digestible foods.
+                        Rope skipping	
+                        </th>
+                        <th class="px-6 py-4 font-light">
+                        Exercise
+                        </th>
+                        <th class="px-6 py-4 font-light">
+                        20 per day
+                        </th>
+                        <th class="px-6 py-4 font-light">
+                        Quick
 
                         </th>
                     </tr>

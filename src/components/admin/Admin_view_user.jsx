@@ -59,9 +59,7 @@ const Admin_view_user = () => {
                         </td>
                         
                         <th scope="row" class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                            <img class="w-10 h-10 rounded-full"  src={images.img1} alt="user"/>
-
-
+                            <img class="w-10 h-10 rounded-full"  src={images.person} alt="user"/>
                             <div class="ps-3">
                                 <div class="text-base font-semibold">Muhammad Ali</div>
                                 <div class="font-normal text-gray-500">muhammadali@gmail.com</div>
@@ -84,7 +82,7 @@ const Admin_view_user = () => {
                             <Link to = "/Admin/edituser"><AiFillEdit/></Link>
                         </td>
                         <td class="px-6 py-4 text-right text-gray-600 hover:text-red-600">
-                            <AiFillDelete/>
+                            <button><AiFillDelete/></button>
                         </td>
                         
                     </tr>

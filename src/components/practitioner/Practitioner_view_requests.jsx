@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import { AiFillInfoCircle } from 'react-icons/ai';
+import images from '../..';
 
 const Practitioner_view_requests = () => {
   return (
@@ -23,13 +24,13 @@ const Practitioner_view_requests = () => {
                             #
                         </th>
                         <th class="px-6 py-3">
-                            Date
+                            Patient
+                        </th>
+                        <th class="px-6 py-3">
+                            Age
                         </th>
                         <th class="px-6 py-3">
                             AI Diagnosis
-                        </th>
-                        <th class="px-6 py-3">
-                            Patient
                         </th>
                         <th class="px-6 py-3">
                             Symptoms
@@ -46,15 +47,18 @@ const Practitioner_view_requests = () => {
                         <td class="px-6 py-4">
                             1
                         </td>
-                        
-                        <th class="px-6 py-4 font-light">
-                            8/22/20
+                        <th scope="row" class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                            <img class="w-10 h-10 rounded-full"  src={images.person} alt="user"/>
+                            <div class="ps-3">
+                                <div class="text-base font-semibold">Muhammad Ali</div>
+                                <div class="font-normal text-gray-500">muhammadali@gmail.com</div>
+                            </div>  
                         </th>
                         <td class="px-6 py-4 font-medium">
-                            Typhoid
+                            37
                         </td>
-                        <td class="px-6 py-4 font-light">
-                            Muhammad Ali
+                        <td class="px-6 py-4 font-medium">
+                            Typhoid
                         </td>
                         <td class="px-6 py-4 font-light">
                           High fever, sore body, abdominal pain

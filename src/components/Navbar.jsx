@@ -12,7 +12,8 @@ const Navbar = () => {
   return (
     <>
     <div className='flex justify-between items-center h-24 max-w-[1230px] mx-auto px-4 text-white'>
-        <h1 className='w-full text-3xl font-bold text-green-500 hover:text-green-400'><Link to = "/">OntoMed</Link></h1>
+        <h1 className='w-full text-3xl font-bold text-green-500 hover:text-green-400'><Link to = "/">
+           OntoMed</Link></h1>
 
         <ul className='hidden md:flex'>
           <li className='p-4'><Link to = "/">Home</Link></li>

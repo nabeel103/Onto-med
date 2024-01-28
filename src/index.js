@@ -4,7 +4,9 @@ import './index.css';
 import App from './App';
 
 const images = {
-    img1: require('./components/images/sample_person.jpeg'),
+    person: require('./components/images/sample_person.jpeg'),
+    login: require('./components/images/login.png'),
+    arabesque: require('./components/images/arabesque.jpg'),
 }
 export default images;
 

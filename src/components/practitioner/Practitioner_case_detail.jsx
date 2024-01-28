@@ -1,6 +1,7 @@
 import React from 'react';
 import { AiFillFileImage, AiFillEdit } from 'react-icons/ai';
 import { Link, useNavigate } from 'react-router-dom';
+import images from '../..';
 
 const Practitioner_case_detail = () => {
     const navigate = useNavigate();
@@ -67,13 +68,16 @@ const Practitioner_case_detail = () => {
                             Patient Name
                         </th>
                         <th class="px-6 py-3">
-                            Patient Age
+                            Age
                         </th>
                         <th class="px-6 py-3">
-                            Phone Number
+                            Weight
                         </th>
                         <th class="px-6 py-3">
-                            Email
+                            Height
+                        </th>
+                        <th class="px-6 py-3">
+                            BMI
                         </th>
                     </tr>
                 </thead>
@@ -81,17 +85,24 @@ const Practitioner_case_detail = () => {
 
                 <tbody>
                     <tr class="bg-black border-b  border-gray-800 hover:bg-gray-900">
-                        <th class="px-6 py-4 font-medium">
-                            Muhammad Ali
+                    <th scope="row" class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                            <img class="w-10 h-10 rounded-full"  src={images.person} alt="user"/>
+                            <div class="ps-3">
+                                <div class="text-base font-semibold">Muhammad Ali</div>
+                                <div class="font-normal text-gray-500">muhammadali@gmail.com</div>
+                            </div>  
                         </th>
                         <td class="px-6 py-4 font-light">
-                            37 years
+                            37 
                         </td>
                         <td class="px-6 py-4 font-light">
-                            03001234567
+                            78kg
                         </td>
                         <td class="px-6 py-4 font-light">
-                            muhammadali@gmail.com
+                            170cm
+                        </td>
+                        <td class="px-6 py-4 font-light">
+                            26
                         </td>
                     </tr>
 
@@ -114,7 +125,21 @@ const Practitioner_case_detail = () => {
                 <tbody>
                     <tr class="bg-black border-b  border-gray-800 hover:bg-gray-900">
                         <th class="px-6 py-4 font-light">
-                        High fever, sore body, abdominal pain
+                        High fever
+                        </th>
+                    </tr>
+                </tbody>
+                <tbody>
+                    <tr class="bg-black border-b  border-gray-800 hover:bg-gray-900">
+                        <th class="px-6 py-4 font-light">
+                        Sore body
+                        </th>
+                    </tr>
+                </tbody>
+                <tbody>
+                    <tr class="bg-black border-b  border-gray-800 hover:bg-gray-900">
+                        <th class="px-6 py-4 font-light">
+                        Abdominal pain
                         </th>
                     </tr>
                 </tbody>
@@ -129,13 +154,31 @@ const Practitioner_case_detail = () => {
                         <th class="px-6 py-3">
                             Prescription
                         </th>
+                        <th class="px-6 py-3">
+                            Type
+                        </th>
+                        <th class="px-6 py-3">
+                            Amount
+                        </th>
+                        <th class="px-6 py-3">
+                            Method
+                        </th>
                     </tr>
                 </thead>
 
                 <tbody>
                     <tr class="bg-black border-b  border-gray-800 hover:bg-gray-900">
                         <th class="px-6 py-4 font-light">
-                        Ciprofloxacin 500 mg, take one tablet orally every 12 hours for a duration of 14 days. Additionally, maintain adequate hydration with oral rehydration solutions and consume easily digestible foods.
+                        Rope skipping	
+                        </th>
+                        <th class="px-6 py-4 font-light">
+                        Exercise
+                        </th>
+                        <th class="px-6 py-4 font-light">
+                        20 per day
+                        </th>
+                        <th class="px-6 py-4 font-light">
+                        Quick
 
                         </th>
                     </tr>

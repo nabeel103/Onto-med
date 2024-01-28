@@ -1,13 +1,19 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { AiFillEdit } from 'react-icons/ai'
+import images from '../..'
 
 const Practitioner_view_profile = () => {
   return (
     <div className='text-white  flex-col mx-auto'>
-        <div className='max-w-[800px] mt-[46px] mb-[76px] w-full mx-auto my-auto text-left flex flex-col'>
-            <h1 className='md:text-7xl sm:text-6xl text-4xl font-bold md:py-6'>Profile</h1>
-            <h1 className='text-green-500'>User profile</h1>
+        
+        <div class="grid grid-cols-2 max-w-[800px] mx-auto">
+            <div className='max-w-[800px] mt-[46px] mb-[76px] w-full mx-auto my-auto text-left flex flex-col'>
+                <h1 className='md:text-7xl sm:text-6xl text-4xl font-bold md:py-6'>Users</h1>
+                <h1 className='text-green-500'>View User Profile</h1>
+            </div>
+
+            <img class="h-20   my-auto rounded-full"  src={images.person} alt="user"/>
         </div>
 
 

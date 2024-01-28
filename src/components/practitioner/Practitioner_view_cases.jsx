@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import { AiFillInfoCircle } from 'react-icons/ai';
+import images from '../..';
 
 const Practitioner_view_cases = () => {
 
@@ -25,13 +26,13 @@ const Practitioner_view_cases = () => {
                             #
                         </th>
                         <th class="px-6 py-3">
+                            Patient
+                        </th>
+                        <th class="px-6 py-3">
                             Date
                         </th>
                         <th class="px-6 py-3">
                             Diagnosis
-                        </th>
-                        <th class="px-6 py-3">
-                            Patient
                         </th>
                         <th class="px-6 py-3">
                             Status
@@ -49,14 +50,18 @@ const Practitioner_view_cases = () => {
                             1
                         </td>
                         
+                        <th scope="row" class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                            <img class="w-10 h-10 rounded-full"  src={images.person} alt="user"/>
+                            <div class="ps-3">
+                                <div class="text-base font-semibold">Muhammad Ali</div>
+                                <div class="font-normal text-gray-500">muhammadali@gmail.com</div>
+                            </div>  
+                        </th>
                         <th class="px-6 py-4 font-medium">
                             8/22/20
                         </th>
                         <td class="px-6 py-4 font-light">
                             Typhoid
-                        </td>
-                        <td class="px-6 py-4 font-light">
-                            Muhammad Ali
                         </td>
                         <td class="px-6 py-4 font-light">
                             <div class="flex items-center">

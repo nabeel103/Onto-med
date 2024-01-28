@@ -22,7 +22,7 @@ const Knowledgeengr_view_rule_detail = () => {
                             Date Added
                         </th>
                         <th class="px-6 py-3">
-                            Name of Illness
+                            Name of Disease
                         </th>
                     </tr>
                 </thead>
@@ -55,7 +55,43 @@ const Knowledgeengr_view_rule_detail = () => {
                 <tbody>
                     <tr class="bg-black border-b  border-gray-800 hover:bg-gray-900">
                         <th class="px-6 py-4 font-light">
-                        High fever, sore body, abdominal pain
+                        High fever
+                        </th>
+                    </tr>
+                    <tr class="bg-black border-b  border-gray-800 hover:bg-gray-900">
+                        <th class="px-6 py-4 font-light">
+                        Sore body
+                        </th>
+                    </tr>
+                    <tr class="bg-black border-b  border-gray-800 hover:bg-gray-900">
+                        <th class="px-6 py-4 font-light">
+                        Abdominal pain
+                        </th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="relative overflow-x-auto w-[90%] max-w-[850px] mt-9 mx-auto">
+            <table class="w-full text-sm text-left rtl:text-right text-white ">
+
+                <thead class=" text-xs text-gray-500 uppercase bg-black border-b  border-gray-800 ">
+                    <tr>
+                        <th class="px-6 py-3">
+                            Questions
+                        </th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr class="bg-black border-b  border-gray-800 hover:bg-gray-900">
+                        <th class="px-6 py-4 font-light">
+                        What are your daily stress levels?
+                        </th>
+                    </tr>
+                    <tr class="bg-black border-b  border-gray-800 hover:bg-gray-900">
+                        <th class="px-6 py-4 font-light">
+                        How many siblings do you have?
                         </th>
                     </tr>
                 </tbody>
@@ -70,13 +106,31 @@ const Knowledgeengr_view_rule_detail = () => {
                         <th class="px-6 py-3">
                             Prescription
                         </th>
+                        <th class="px-6 py-3">
+                            Type
+                        </th>
+                        <th class="px-6 py-3">
+                            Amount
+                        </th>
+                        <th class="px-6 py-3">
+                            Method
+                        </th>
                     </tr>
                 </thead>
 
                 <tbody>
                     <tr class="bg-black border-b  border-gray-800 hover:bg-gray-900">
                         <th class="px-6 py-4 font-light">
-                        Ciprofloxacin 500 mg, take one tablet orally every 12 hours for a duration of 14 days. Additionally, maintain adequate hydration with oral rehydration solutions and consume easily digestible foods.
+                        Rope skipping	
+                        </th>
+                        <th class="px-6 py-4 font-light">
+                        Exercise
+                        </th>
+                        <th class="px-6 py-4 font-light">
+                        20 per day
+                        </th>
+                        <th class="px-6 py-4 font-light">
+                        Quick
 
                         </th>
                     </tr>

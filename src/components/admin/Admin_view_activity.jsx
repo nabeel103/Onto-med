@@ -21,6 +21,9 @@ const Admin_view_activity = () => {
                             <AiFillClockCircle/>
                         </th>
                         <th class="px-6 py-3">
+                            Actor
+                        </th>
+                        <th class="px-6 py-3">
                             Activity
                         </th>
                     </tr>
@@ -35,6 +38,9 @@ const Admin_view_activity = () => {
                             2:03
                         </th>
                         <td class="px-6 py-4 font-medium">
+                            Practitioner
+                        </td>
+                        <td class="px-6 py-4 font-light">
                             Muhammad Asim's case concluded by Hakeem Ali Hajvery
                         </td>
                     </tr>
@@ -48,6 +54,9 @@ const Admin_view_activity = () => {
                             2:07
                         </th>
                         <td class="px-6 py-4 font-medium">
+                            Knowledge Engr
+                        </td>
+                        <td class="px-6 py-4 font-light">
                             Rule added by Hakeem Muhammad Johar
                         </td>
                     </tr>
@@ -61,6 +70,9 @@ const Admin_view_activity = () => {
                             2:10
                         </th>
                         <td class="px-6 py-4 font-medium">
+                            Patient
+                        </td>
+                        <td class="px-6 py-4 font-light">
                             Shafqat Ullah created account as patient
                         </td>
                     </tr>
@@ -74,6 +86,9 @@ const Admin_view_activity = () => {
                             2:17
                         </th>
                         <td class="px-6 py-4 font-medium">
+                            Patient
+                        </td>
+                        <td class="px-6 py-4 font-light">
                             Mohsin Ghani requested diagnosis
                         </td>
                     </tr>
