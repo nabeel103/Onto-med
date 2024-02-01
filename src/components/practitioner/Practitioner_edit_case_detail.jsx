@@ -140,7 +140,7 @@ const Practitioner_edit_case_detail = () => {
               <option>Exercise</option>
               </select>
             </div>
-            <input type="text" id="large-input" class="ml-2 block w-[120px] text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-green-500 focus:border-green-500 dark:bg-gray-900 dark:border-gray-800 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500 " placeholder='amount'/>
+            <input type="text" id="large-input" class="ml-2 block w-[120px] text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-green-500 focus:border-green-500 dark:bg-gray-900 dark:border-gray-800 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500 " placeholder='Quantity/Detail'/>
             <input type="text" id="large-input" class="ml-2 block w-[120px] text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-green-500 focus:border-green-500 dark:bg-gray-900 dark:border-gray-800 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder='method'/>
 
             

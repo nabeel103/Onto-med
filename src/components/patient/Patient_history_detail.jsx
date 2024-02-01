@@ -143,7 +143,7 @@ const Patient_history_detail = () => {
                             Type
                         </th>
                         <th class="px-6 py-3">
-                            Amount
+                            Quantity/Detail
                         </th>
                         <th class="px-6 py-3">
                             Method

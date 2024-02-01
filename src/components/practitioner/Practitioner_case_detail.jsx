@@ -182,7 +182,7 @@ const Practitioner_case_detail = () => {
                             Type
                         </th>
                         <th class="px-6 py-3">
-                            Amount
+                        Quantity/Detail
                         </th>
                         <th class="px-6 py-3">
                             Method
