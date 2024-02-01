@@ -12,7 +12,7 @@ const Researcher_dashboard = () => {
 
 
         <div class="relative overflow-x-auto max-w-[800px] mx-auto mt-[23px]">
-            <table class="w-full text-sm text-left rtl:text-right text-white ">
+            <table class="w-full text-sm text-left rtl:text-right dark:text-white text-black ">
                 <caption class="p-5 text-lg font-semibold text-left rtl:text-right text-gray-100 bg-gray-900">
                     Cases
 

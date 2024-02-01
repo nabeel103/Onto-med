@@ -4,7 +4,7 @@ import { AiOutlinePlus, AiFillDelete,  } from 'react-icons/ai'
 
 const Patient_add_diagosis = () => {
   return (
-    <div className='text-white  flex-col mx-auto'>
+    <div className='dark:text-white text-black flex-col mx-auto'>
         <div className='max-w-[800px] mt-[46px] mb-[76px] w-full mx-auto my-auto text-left flex flex-col'>
             <h1 className='md:text-7xl sm:text-6xl text-4xl font-bold md:py-6'>Diagnosis</h1>
             <h1 className='text-green-500 '>Request new diagnosis</h1>
@@ -60,7 +60,7 @@ const Patient_add_diagosis = () => {
 
 
 
-            <table class="w-full text-sm text-left rtl:text-right text-white">
+            <table class="w-full text-sm text-left rtl:text-right dark:text-white text-black">
                 <thead class="text-xs text-gray-500 uppercase bg-black border-b  border-gray-800">
                     <tr>
                         <th scope="col" class="p-4">
@@ -150,7 +150,7 @@ const Patient_add_diagosis = () => {
 
 
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-    <table class="w-full text-sm text-left rtl:text-right text-white">
+    <table class="w-full text-sm text-left rtl:text-right dark:text-white text-black">
         <thead class="text-xs text-gray-500 uppercase bg-black border-b  border-gray-800">
             <tr>
                 <th scope="col" class="p-4">

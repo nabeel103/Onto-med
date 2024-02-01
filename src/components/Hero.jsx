@@ -5,13 +5,13 @@ import images from '..';
 
 const Hero = () => {
   return (
-    <div className='text-white max-w-[1130px] mx-auto my-20 px-5'>
+    <div className='text-black bg-white dark:bg-black dark:text-white max-w-[1130px] mx-auto my-20 px-5'>
     
 
       <section class="">
     <div class="grid max-w-screen-xl py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
         <div class="mr-auto place-self-center lg:col-span-7">
-            <h1 class="max-w-2xl mb-4 text-4xl font-extrabold leading-none md:text-5xl xl:text-6xl dark:text-white">OntoMed</h1>
+            <h1 class="max-w-2xl mb-4 text-4xl font-extrabold leading-none md:text-5xl xl:text-6xl text-black dark:text-white">OntoMed</h1>
             <p className='text-green-500 font-bold  uppercase'>unani medicine diagnostics</p>
             <div className='flex py-2 mt-9'>
           <p className='md:text-3xl sm:text-4xl text-xl font-bold'>A tool for</p>
@@ -26,7 +26,7 @@ const Hero = () => {
         
 
         <Link to = "/login">
-          <button className='bg-green-500 hover:bg-green-400 w-[200px] rounded-md font-medium my-6 mx-auto px-6 py-3 text-black'>
+          <button className='bg-green-500 hover:bg-green-400 w-[200px] rounded-md font-medium my-6 mx-auto px-6 py-3 text-white '>
             Get Started
           </button>
         </Link>

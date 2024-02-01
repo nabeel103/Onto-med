@@ -7,13 +7,13 @@ const Login = () => {
     <div class="flex min-h-full flex-col justify-center px-6 py-24 lg:px-8">
         <div class="sm:mx-auto sm:w-full sm:max-w-sm">
             <img class="mx-auto h-20 w-auto" src={ require("./images/login.png")} />
-            <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-100">Sign in to your account</h2>
+            <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900 dark:text-gray-100">Sign in to your account</h2>
         </div>
 
         <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
             <form class="space-y-6" action="#" method="POST">
             <div>
-                <label for="email" class="block text-sm font-medium leading-6 text-gray-100">
+                <label for="email" class="block text-sm font-medium leading-6 text-gray-900 dark:text-gray-100">
                     Email address
                 </label>
                 <div class="mt-2">
@@ -23,7 +23,7 @@ const Login = () => {
 
             <div>
                 <div class="flex items-center justify-between">
-                <label for="password" class="block text-sm font-medium leading-6 text-gray-100">Password</label>
+                <label for="password" class="block text-sm font-medium leading-6 text-gray-900 dark:text-gray-100">Password</label>
                 <div class="text-sm">
                     <a href="#" class="font-semibold text-green-500 hover:text-green-400">Forgot password?</a>
                 </div>

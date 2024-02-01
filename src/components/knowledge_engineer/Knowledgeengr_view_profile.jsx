@@ -18,13 +18,13 @@ const Knowledgeengr_view_profile = () => {
 
         <div class="grid gap-6 mb-6 md:grid-cols-2 max-w-[800px] mx-auto">
             <div>
-                <label for="Name" class="block mb-2 text-sm font-medium text-white">Name</label>
+                <label for="Name" class="block mb-2 text-sm font-medium dark:text-white text-black">Name</label>
                 <label class="font-extrabold font">Muhammad Ali</label>
             </div>
 
 
             <div class="w-full ">
-                <label for="type" class="block mb-2 text-sm font-medium text-white">Account Type</label>
+                <label for="type" class="block mb-2 text-sm font-medium dark:text-white text-black">Account Type</label>
                 <label class="font-extrabold font">Knowledge Engineer</label>
             <div class="relative ">
                 
@@ -33,15 +33,15 @@ const Knowledgeengr_view_profile = () => {
 
 
             <div>
-                <label for="phone" class="block mb-2 text-sm font-medium text-white">Phone number</label>
+                <label for="phone" class="block mb-2 text-sm font-medium dark:text-white text-black">Phone number</label>
                 <label class="font-extrabold font">03001234567</label>
             </div>
             <div>
-                <label for="cnic" class="block mb-2 text-sm font-medium text-white">CNIC</label>
+                <label for="cnic" class="block mb-2 text-sm font-medium dark:text-white text-black">CNIC</label>
                 <label class="font-extrabold font">352083055737</label>
             </div>
             <div class="mb-6">
-                <label for="email" class="block mb-2 text-sm font-medium text-white">Email address</label>
+                <label for="email" class="block mb-2 text-sm font-medium dark:text-white text-black">Email address</label>
                 <label class="font-extrabold font">muhammadali@gmail.com</label>
             </div>
             <Link to ="/knowledgeengr/editprofile">

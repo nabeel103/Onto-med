@@ -12,7 +12,7 @@ const Knowledgeengr_view_report = () => {
 
 
         <div class="relative overflow-x-auto max-w-[850px] mx-auto mt-[96px]">
-            <table class="w-full text-sm text-left rtl:text-right text-white ">
+            <table class="w-full text-sm text-left rtl:text-right dark:text-white text-black ">
 
                 <thead class=" text-xs text-gray-500 uppercase bg-black border-b  border-gray-800 ">
                     <tr>

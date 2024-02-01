@@ -14,7 +14,7 @@ const Knowledgeengr_view_rule_detail = () => {
 
 
       <div class="relative overflow-x-auto w-[90%] max-w-[850px] mx-auto">
-            <table class="w-full text-sm text-left rtl:text-right text-white ">
+            <table class="w-full text-sm text-left rtl:text-right dark:text-white text-black ">
 
                 <thead class=" text-xs text-gray-500 uppercase bg-black border-b  border-gray-800 ">
                     <tr>
@@ -42,7 +42,7 @@ const Knowledgeengr_view_rule_detail = () => {
         </div>
 
         <div class="relative overflow-x-auto w-[90%] max-w-[850px] mt-9 mx-auto">
-        <table class="w-full text-sm text-left rtl:text-right text-white">
+        <table class="w-full text-sm text-left rtl:text-right dark:text-white text-black">
                 <thead class="text-xs text-gray-500 uppercase bg-black border-b  border-gray-800">
                     <tr>
                         <th scope="col" class="px-6 py-3">
@@ -101,7 +101,7 @@ const Knowledgeengr_view_rule_detail = () => {
         </div>
 
         <div class="relative overflow-x-auto w-[90%] max-w-[850px] mt-9 mx-auto">
-            <table class="w-full text-sm text-left rtl:text-right text-white ">
+            <table class="w-full text-sm text-left rtl:text-right dark:text-white text-black ">
 
                 <thead class=" text-xs text-gray-500 uppercase bg-black border-b  border-gray-800 ">
                     <tr>
@@ -127,7 +127,7 @@ const Knowledgeengr_view_rule_detail = () => {
         </div>
 
         <div class="relative overflow-x-auto w-[90%] max-w-[850px] mt-9 mx-auto">
-            <table class="w-full text-sm text-left rtl:text-right text-white ">
+            <table class="w-full text-sm text-left rtl:text-right dark:text-white text-black ">
 
                 <thead class=" text-xs text-gray-500 uppercase bg-black border-b  border-gray-800 ">
                     <tr>

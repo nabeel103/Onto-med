@@ -13,7 +13,7 @@ const Patient_history_detail = () => {
 
 
       <div class="relative overflow-x-auto w-[90%] max-w-[850px] mx-auto">
-            <table class="w-full text-sm text-left rtl:text-right text-white ">
+            <table class="w-full text-sm text-left rtl:text-right dark:text-white text-black ">
 
                 <thead class=" text-xs text-gray-500 uppercase bg-black border-b  border-gray-800 ">
                     <tr>
@@ -58,7 +58,7 @@ const Patient_history_detail = () => {
         </div>
 
         <div class="relative overflow-x-auto w-[90%] max-w-[850px] mt-9 mx-auto">
-        <table class="w-full text-sm text-left rtl:text-right text-white">
+        <table class="w-full text-sm text-left rtl:text-right dark:text-white text-black">
                 <thead class="text-xs text-gray-500 uppercase bg-black border-b  border-gray-800">
                     <tr>
                         <th scope="col" class="p-4">
@@ -132,7 +132,7 @@ const Patient_history_detail = () => {
         </div>
 
         <div class="relative overflow-x-auto w-[90%] max-w-[850px] mt-9 mx-auto">
-            <table class="w-full text-sm text-left rtl:text-right text-white ">
+            <table class="w-full text-sm text-left rtl:text-right dark:text-white text-black ">
 
                 <thead class=" text-xs text-gray-500 uppercase bg-black border-b  border-gray-800 ">
                     <tr>

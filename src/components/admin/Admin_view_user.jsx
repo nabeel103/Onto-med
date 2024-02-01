@@ -6,7 +6,7 @@ import images from '../..';
 
 const Admin_view_user = () => {
   return (
-    <div className='text-white  flex-col mx-auto'>
+    <div className='dark:text-white text-black  flex-col mx-auto'>
         <div className='max-w-[800px] mt-[46px] mb-[76px] w-full mx-auto my-auto text-left flex flex-col'>
             <h1 className='md:text-7xl sm:text-6xl text-4xl font-bold md:py-6'>Users</h1>
             <h1 className='text-green-500 '>View all Users</h1>
@@ -23,9 +23,9 @@ const Admin_view_user = () => {
                     </button>
                 </Link>
             </div>
-            <table class="w-full text-sm text-left rtl:text-right text-white ">
 
-                <thead class=" text-xs text-gray-500 uppercase bg-black border-b  border-gray-800 ">
+            <table class="w-full text-sm text-left rtl:text-right text-black dark:text-white ">
+            <thead class=" text-xs text-gray-500 uppercase dark:bg-black bg-white border-b  dark:border-gray-900 border-gray-200 ">
                     <tr>
                         <th class="px-6 py-3">
                             #
@@ -53,12 +53,12 @@ const Admin_view_user = () => {
 
 
                 <tbody>
-                    <tr class="bg-black border-b  border-gray-800 hover:bg-gray-900">
+                <tr class="dark:bg-black bg-white border-b  dark:border-gray-900 border-gray-200 hover:dark:bg-gray-900 ">
                         <td class="px-6 py-4">
                             1
                         </td>
                         
-                        <th scope="row" class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                        <th scope="row" class="flex items-center px-6 py-4 dark:text-white text-black whitespace-nowrap">
                             <img class="w-10 h-10 rounded-full"  src={images.person} alt="user"/>
                             <div class="ps-3">
                                 <div class="text-base font-semibold">Muhammad Ali</div>

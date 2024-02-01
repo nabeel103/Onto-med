@@ -3,7 +3,7 @@ import { AiFillClockCircle, AiFillCalendar } from 'react-icons/ai'
 
 const Admin_view_activity = () => {
   return (
-    <div className='text-white  flex-col mx-auto'>
+    <div className='dark:text-white text-black  flex-col mx-auto'>
         <div className='max-w-[800px] mt-[46px] mb-[76px] w-full mx-auto my-auto text-left flex flex-col'>
             <h1 className='md:text-7xl sm:text-6xl text-4xl font-bold md:py-6'>Activities</h1>
             <h1 className='text-green-500 '>View all Activities</h1>
@@ -11,8 +11,8 @@ const Admin_view_activity = () => {
 
 
         <div class="relative overflow-x-auto max-w-[850px] mx-auto mt-[96px]">
-        <table class="w-full text-sm text-left rtl:text-right text-white ">
-                <thead class=" text-xs text-gray-500 uppercase bg-black border-b  border-gray-800 ">
+        <table class="w-full text-sm text-left rtl:text-right text-black dark:text-white ">
+        <thead class=" text-xs text-gray-500 uppercase dark:bg-black bg-white border-b  dark:border-gray-900 border-gray-200 ">
                     <tr>
                         <th class="px-6 py-3">
                             <AiFillCalendar/>
@@ -30,7 +30,7 @@ const Admin_view_activity = () => {
                 </thead>
 
                 <tbody>
-                    <tr class="bg-black border-b  border-gray-800 hover:bg-gray-900">
+                <tr class="dark:bg-black bg-white border-b  dark:border-gray-900 border-gray-200 hover:dark:bg-gray-900 ">
                         <td class="px-6 py-4">
                             11/02/2023
                         </td>
@@ -46,7 +46,7 @@ const Admin_view_activity = () => {
                     </tr>
                 </tbody>
                 <tbody>
-                    <tr class="bg-black border-b  border-gray-800 hover:bg-gray-900">
+                <tr class="dark:bg-black bg-white border-b  dark:border-gray-900 border-gray-200 hover:dark:bg-gray-900 ">
                         <td class="px-6 py-4">
                             11/02/2023
                         </td>
@@ -62,7 +62,7 @@ const Admin_view_activity = () => {
                     </tr>
                 </tbody>
                 <tbody>
-                    <tr class="bg-black border-b  border-gray-800 hover:bg-gray-900">
+                <tr class="dark:bg-black bg-white border-b  dark:border-gray-900 border-gray-200 hover:dark:bg-gray-900 ">
                         <td class="px-6 py-4">
                             11/02/2023
                         </td>
@@ -78,7 +78,7 @@ const Admin_view_activity = () => {
                     </tr>
                 </tbody>
                 <tbody>
-                    <tr class="bg-black border-b  border-gray-800 hover:bg-gray-900">
+                <tr class="dark:bg-black bg-white border-b  dark:border-gray-900 border-gray-200 hover:dark:bg-gray-900 ">
                         <td class="px-6 py-4">
                             11/02/2023
                         </td>

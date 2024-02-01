@@ -17,7 +17,7 @@ const Knowledgeengr_edit_rule = () => {
         <form class="max-w-[800px] mt-[46px] mb-[76px] w-full mx-auto my-auto text-left flex flex-col">
           <div>
             <label for="large-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name of Disease</label>
-            <input type="text" id="name" class="text-sm rounded-lg block max-w-sm p-2.5 bg-gray-900 border-gray-800 placeholder-gray-400 text-white focus:ring-green-500 focus:border-green-500"  required />
+            <input type="text" id="name" class="text-sm rounded-lg block max-w-sm p-2.5 bg-gray-900 border-gray-800 placeholder-gray-400 dark:text-white text-black focus:ring-green-500 focus:border-green-500"  required />
           </div>
           
 
@@ -108,7 +108,7 @@ const Knowledgeengr_edit_rule = () => {
             
             <input type="text" id="large-input" class="block w-[350px] text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-green-500 focus:border-green-500 dark:bg-gray-900 dark:border-gray-800 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500"/>
             <div class="relative ml-2 ">
-              <select class="text-sm rounded-lg block w-full p-2.5 bg-gray-900 border-gray-800 placeholder-gray-400 text-white focus:ring-green-500 focus:border-green-500" id="grid-state">
+              <select class="text-sm rounded-lg block w-full p-2.5 bg-gray-900 border-gray-800 placeholder-gray-400 dark:text-white text-black focus:ring-green-500 focus:border-green-500" id="grid-state">
               <option>Diet</option>
               <option>Medicine</option>
               <option>Exercise</option>
@@ -124,7 +124,7 @@ const Knowledgeengr_edit_rule = () => {
           </div>
 
           
-          <table class="min-w-[800px] mt-5 text-sm text-left rtl:text-right text-white ">
+          <table class="min-w-[800px] mt-5 text-sm text-left rtl:text-right dark:text-white text-black ">
               <thead class=" text-xs text-gray-500 uppercase bg-black border-b  border-gray-800 ">
                   <tr>
                   </tr>

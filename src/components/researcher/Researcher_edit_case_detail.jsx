@@ -19,7 +19,7 @@ const Researcher_edit_case_detail = () => {
         <form class="max-w-[800px] mx-auto flex-col">
             <label for="type" class="mt-5 mb-3 flex w-full text-xs text-left rtl:text-right font-bold text-gray-500 uppercase">Rating</label>
             <div class="relative ">
-                <select class="text-sm max-w-xs rounded-lg block w-full p-2.5 bg-gray-900 border-gray-800 placeholder-gray-400 text-white focus:ring-green-500 focus:border-green-500" id="grid-state">
+                <select class="text-sm max-w-xs rounded-lg block w-full p-2.5 bg-gray-900 border-gray-800 placeholder-gray-400 dark:text-white text-black focus:ring-green-500 focus:border-green-500" id="grid-state">
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
