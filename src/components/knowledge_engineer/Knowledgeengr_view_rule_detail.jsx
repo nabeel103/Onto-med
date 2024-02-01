@@ -8,12 +8,12 @@ const Knowledgeengr_view_rule_detail = () => {
   return (
     <div className='text-black dark:text-white flex-col mx-auto'>
       <div className='max-w-[800px] mt-[46px] mb-[76px] w-full mx-auto my-auto text-left flex flex-col'>
-        <h1 className='md:text-7xl sm:text-6xl text-4xl font-bold md:py-6'>Rules</h1>
-        <h1 className='text-green-500 '>Details of a particular rule</h1>
+        <h1 className='md:text-7xl sm:text-6xl text-4xl font-bold md:py-6 ml-3'>Rules</h1>
+        <h1 className='text-green-500 ml-3'>Details of a particular rule</h1>
       </div>
 
 
-      <div class="relative overflow-x-auto w-[90%] max-w-[850px] mx-auto">
+      <div class="relative overflow-x-auto  max-w-[850px] mx-auto">
             <table class="w-full text-sm text-left rtl:text-right dark:text-white text-black ">
 
                 <thead class=" text-xs text-gray-500 uppercase bg-white dark:bg-black border-b  border-gray-200 dark:border-gray-800 ">
@@ -41,7 +41,7 @@ const Knowledgeengr_view_rule_detail = () => {
             </table>
         </div>
 
-        <div class="relative overflow-x-auto w-[90%] max-w-[850px] mt-9 mx-auto">
+        <div class="relative overflow-x-auto  max-w-[850px] mt-9 mx-auto">
         <table class="w-full text-sm text-left rtl:text-right text-black dark:text-white ">
                 <thead class=" text-xs text-gray-500 uppercase dark:bg-black bg-white border-b  dark:border-gray-900 border-gray-200 ">
                     <tr>
@@ -100,7 +100,7 @@ const Knowledgeengr_view_rule_detail = () => {
             </table>
         </div>
 
-        <div class="relative overflow-x-auto w-[90%] max-w-[850px] mt-9 mx-auto">
+        <div class="relative overflow-x-auto  max-w-[850px] mt-9 mx-auto">
             <table class="w-full text-sm text-left rtl:text-right dark:text-white text-black ">
 
                 <thead class=" text-xs text-gray-500 uppercase bg-white dark:bg-black border-b  border-gray-200 dark:border-gray-800 ">
@@ -126,7 +126,7 @@ const Knowledgeengr_view_rule_detail = () => {
             </table>
         </div>
 
-        <div class="relative overflow-x-auto w-[90%] max-w-[850px] mt-9 mx-auto">
+        <div class="relative overflow-x-auto  max-w-[850px] mt-9 mx-auto">
             <table class="w-full text-sm text-left rtl:text-right dark:text-white text-black ">
 
                 <thead class=" text-xs text-gray-500 uppercase bg-white dark:bg-black border-b  border-gray-200 dark:border-gray-800 ">
@@ -167,7 +167,7 @@ const Knowledgeengr_view_rule_detail = () => {
         </div>
 
 
-        <div class="relative overflow-x-auto w-[90%] max-w-[850px] mt-9 mx-auto">
+        <div class="relative overflow-x-auto  max-w-[850px] mt-9 mx-auto">
             <Link to ="/knowledgeengr/editrule">
             <button class="px-6 flex w-full text-xs text-left rtl:text-right font-bold text-gray-500 uppercase underline decoration-dotted hover:text-green-500">
                 <AiFillEdit className='mr-2 w-4 h-4 my-auto'/> Edit Rule

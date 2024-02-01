@@ -8,13 +8,13 @@ const Patient_add_diagosis = () => {
 
         {/* HEADLINE  */}
         <div className='max-w-[800px] mt-[46px] mb-[76px] w-full mx-auto my-auto text-left flex flex-col'>
-            <h1 className='md:text-7xl sm:text-6xl text-4xl font-bold md:py-6'>Diagnosis</h1>
-            <h1 className='text-green-500 '>Request new diagnosis</h1>
+            <h1 className='md:text-7xl sm:text-6xl text-4xl font-bold md:py-6 ml-3'>Diagnosis</h1>
+            <h1 className='text-green-500 ml-3'>Request new diagnosis</h1>
             
         </div>
 
         {/* OVERALL FORM  */}
-        <form class="max-w-[800px] mt-[46px] mb-[76px] w-full mx-auto my-auto text-left flex flex-col">
+        <form class="max-w-[800px] mt-[46px] mb-[76px] w-full mx-auto my-auto text-left flex flex-col px-3">
 
             {/* ADD SYMPTOMS  */}
             <label for="large-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Add Symptoms</label>

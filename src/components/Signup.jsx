@@ -1,15 +1,14 @@
 import React from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import { AiFillUpCircle } from 'react-icons/ai';
+import { useNavigate } from 'react-router-dom'
+import { AiFillUpCircle, } from 'react-icons/ai'
 
-const Knowledgeengr_edit_profile = () => {
+const Signup = () => {
   const navigate = useNavigate();
-
   return (
     <div className='text-black dark:text-white flex-col mx-auto'>
       <div className='max-w-[800px] mt-[46px] mb-[76px] w-full mx-auto my-auto text-left flex flex-col'>
-        <h1 className='md:text-7xl sm:text-6xl text-4xl font-bold md:py-6 ml-3'>Users</h1>
-        <h1 className='text-green-500 ml-3'>Edit User</h1>
+        <h1 className='md:text-7xl sm:text-6xl text-4xl font-bold md:py-6 ml-3'>Sign up</h1>
+        <h1 className='text-green-500 ml-3'>Create a new account</h1>
       </div>
 
 
@@ -24,8 +23,8 @@ const Knowledgeengr_edit_profile = () => {
                   <label for="type" class="block mb-2 text-sm font-medium dark:text-white text-black">Type</label>
                 <div class="relative ">
                   <select class="text-sm rounded-lg block w-full p-2.5 bg-gray-100 dark:bg-gray-900 border-gray-200 dark:border-gray-800 placeholder-gray-400 dark:text-white text-black focus:ring-green-500 focus:border-green-500" id="grid-state" disabled>
-                  <option>Knowledge Engineer</option>
                   <option>Patient</option>
+                  <option>Knowledge Engineer</option>
                   <option>Practitioner</option>
                   <option>Senior Practitioner</option>
                   
@@ -78,8 +77,6 @@ const Knowledgeengr_edit_profile = () => {
               
           </div>
           
-
-
           <div>
           <button type="submit" class="max-w-[200px] ml-3 my-2 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center text-white dark:text-black bg-green-500 hover:bg-green-400 focus:ring-green-800">Save Changes</button>
           
@@ -99,4 +96,4 @@ const Knowledgeengr_edit_profile = () => {
   )
 }
 
-export default Knowledgeengr_edit_profile
+export default Signup

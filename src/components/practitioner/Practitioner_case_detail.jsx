@@ -9,12 +9,12 @@ const Practitioner_case_detail = () => {
   return (
     <div className='text-black dark:text-white flex-col mx-auto'>
       <div className='max-w-[800px] mt-[46px] mb-[76px] w-full mx-auto my-auto text-left flex flex-col'>
-        <h1 className='md:text-7xl sm:text-6xl text-4xl font-bold md:py-6'>Cases</h1>
-        <h1 className='text-green-500 '>Detail of a particular case</h1>
+        <h1 className='md:text-7xl sm:text-6xl text-4xl font-bold md:py-6 ml-3'>Cases</h1>
+        <h1 className='text-green-500 ml-3'>Detail of a particular case</h1>
       </div>
 
 
-      <div class="relative overflow-x-auto w-[90%] max-w-[850px] mx-auto">
+      <div class="relative overflow-x-auto  max-w-[850px] mx-auto">
             <table class="w-full text-sm text-left rtl:text-right dark:text-white text-black ">
 
                 <thead class=" text-xs text-gray-500 uppercase bg-white dark:bg-black border-b  border-gray-200 dark:border-gray-800 ">
@@ -59,7 +59,7 @@ const Practitioner_case_detail = () => {
             </table>
         </div>
 
-        <div class="relative overflow-x-auto w-[90%] max-w-[850px] mt-9 mx-auto">
+        <div class="relative overflow-x-auto  max-w-[850px] mt-9 mx-auto">
             <table class="w-full text-sm text-left rtl:text-right dark:text-white text-black ">
 
                 <thead class=" text-xs text-gray-500 uppercase bg-white dark:bg-black border-b  border-gray-200 dark:border-gray-800 ">
@@ -111,7 +111,7 @@ const Practitioner_case_detail = () => {
             </table>
         </div>
 
-        <div class="relative overflow-x-auto w-[90%] max-w-[850px] mt-9 mx-auto">
+        <div class="relative overflow-x-auto  max-w-[850px] mt-9 mx-auto">
         <table class="w-full text-sm text-left rtl:text-right text-black dark:text-white ">
                 <thead class=" text-xs text-gray-500 uppercase dark:bg-black bg-white border-b  dark:border-gray-900 border-gray-200 ">
                     <tr>
@@ -170,7 +170,7 @@ const Practitioner_case_detail = () => {
             </table>
         </div>
 
-        <div class="relative overflow-x-auto w-[90%] max-w-[850px] mt-9 mx-auto">
+        <div class="relative overflow-x-auto  max-w-[850px] mt-9 mx-auto">
             <table class="w-full text-sm text-left rtl:text-right dark:text-white text-black ">
 
                 <thead class=" text-xs text-gray-500 uppercase bg-white dark:bg-black border-b  border-gray-200 dark:border-gray-800 ">
@@ -210,13 +210,13 @@ const Practitioner_case_detail = () => {
             </table>
         </div>
 
-        <div class="relative overflow-x-auto w-[90%] max-w-[850px] mt-9 mx-auto">
+        <div class="relative overflow-x-auto  max-w-[850px] mt-9 mx-auto">
             <button class="px-6 flex w-full text-xs text-left rtl:text-right font-bold text-gray-500 uppercase underline decoration-dotted">
                 <AiFillFileImage className='mr-2 w-4 h-4 my-auto'/> Download Images
             </button>
         </div>
 
-        <div class="relative overflow-x-auto w-[90%] max-w-[850px] mt-9 mx-auto">
+        <div class="relative overflow-x-auto  max-w-[850px] mt-9 mx-auto">
             <Link to ="/practitioner/editcasedetail">
             <button class="px-6 flex w-full text-xs text-left rtl:text-right font-bold text-gray-500 uppercase underline decoration-dotted">
                 <AiFillEdit className='mr-2 w-4 h-4 my-auto'/> Make Changes
@@ -229,7 +229,7 @@ const Practitioner_case_detail = () => {
         <div class="max-w-[800px] mx-auto flex-col mt-20">
             
             <Link to="/practitioner/viewcases">
-                <button type="button" onClick={() => navigate(-1)} class="font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center border border-green-600 hover:bg-green-500  focus:ring-green-800">
+                <button type="button" onClick={() => navigate(-1)} class="mb-5 sm:max-w-[50%] font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center border border-green-600 hover:bg-green-500  focus:ring-green-800">
                     Go Back
                 </button>
             </Link>

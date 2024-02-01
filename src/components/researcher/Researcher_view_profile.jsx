@@ -8,15 +8,15 @@ const Researcher_view_profile = () => {
     <div className='text-black dark:text-white flex-col mx-auto'>
         <div class="grid grid-cols-2 max-w-[800px] mx-auto">
             <div className='max-w-[800px] mt-[46px] mb-[76px] w-full mx-auto my-auto text-left flex flex-col'>
-                <h1 className='md:text-7xl sm:text-6xl text-4xl font-bold md:py-6'>Users</h1>
-                <h1 className='text-green-500'>View User Profile</h1>
+                <h1 className='md:text-7xl sm:text-6xl text-4xl font-bold md:py-6 ml-3'>Users</h1>
+                <h1 className='text-green-500 ml-3'>View User Profile</h1>
             </div>
 
             <img class="h-20   my-auto rounded-full"  src={images.person} alt="user"/>
         </div>
 
 
-        <div class="grid gap-6 mb-6 md:grid-cols-2 max-w-[800px] mx-auto">
+        <div class="grid gap-6 mb-6 md:grid-cols-2 max-w-[800px] mx-auto pl-3">
             <div>
                 <label for="Name" class="block mb-2 text-sm font-medium dark:text-white text-black">Name</label>
                 <label class="font-extrabold font">Muhammad Ali</label>
@@ -54,7 +54,7 @@ const Researcher_view_profile = () => {
         <div class="max-w-[800px] mx-auto flex-col mt-20">
             
             <Link to="/">
-                <button type="button" class="font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center border border-red-600 hover:bg-red-500 hover:border-red-600 focus:ring-green-800">Signout</button>
+                <button type="button" class="font-medium max-w-[150px] mx-3 mb-5 rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center border border-red-600 hover:bg-red-500 hover:border-red-600 focus:ring-green-800">Signout</button>
             </Link>
         </div>
 

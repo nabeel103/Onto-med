@@ -6,12 +6,12 @@ const Knowledgeengr_view_rule = () => {
   return (
     <div className='text-black dark:text-white flex-col mx-auto'>
       <div className='max-w-[800px] mt-[46px] mb-[76px] w-full mx-auto my-auto text-left flex flex-col'>
-        <h1 className='md:text-7xl sm:text-6xl text-4xl font-bold md:py-6'>Knowledge-Base</h1>
-        <h1 className='text-green-500 '>A list of all rules</h1>
+        <h1 className='md:text-7xl sm:text-6xl text-4xl font-bold md:py-6 ml-3'>Knowledge-Base</h1>
+        <h1 className='text-green-500 ml-3'>A list of all rules</h1>
       </div>
 
 
-      <div class="relative overflow-x-auto w-[90%] max-w-[1230px] mx-auto">
+      <div class="relative overflow-x-auto  max-w-[1230px] mx-auto">
             <table class="w-full text-sm text-left rtl:text-right dark:text-white text-black ">
 
                 <thead class=" text-xs text-gray-500 uppercase bg-white dark:bg-black border-b  border-gray-200 dark:border-gray-800 ">

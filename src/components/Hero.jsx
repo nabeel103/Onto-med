@@ -6,7 +6,8 @@ import images from '..';
 const Hero = () => {
   return (
     <div className='text-black bg-white dark:bg-black dark:text-white max-w-[1130px] mx-auto my-20 px-5'>
-    
+
+
 
       <section class="">
     <div class="grid max-w-screen-xl py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">

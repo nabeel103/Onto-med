@@ -7,13 +7,13 @@ const Admin_edit_user = () => {
   return (
     <div className='dark:text-white text-black  flex-col mx-auto'>
       <div className='max-w-[800px] mt-[46px] mb-[76px] w-full mx-auto my-auto text-left flex flex-col'>
-        <h1 className='md:text-7xl sm:text-6xl text-4xl font-bold md:py-6'>Users</h1>
-        <h1 className='text-green-500'>Edit User</h1>
+        <h1 className='md:text-7xl sm:text-6xl text-4xl font-bold md:py-6 ml-3'>Users</h1>
+        <h1 className='text-green-500 ml-3'>Edit User</h1>
       </div>
 
 
       <form className='max-w-[800px] mx-auto'>
-          <div class="grid gap-6 mb-6 md:grid-cols-2">
+          <div class="grid gap-6 mb-6 md:grid-cols-2 px-3">
               <div>
                   <label for="Name" class="block mb-2 text-sm font-medium dark:text-white text-black">Name</label>
                   <input type="text" id="name" class="text-sm rounded-lg block w-full p-2.5 dark:bg-gray-900 dark:border-gray-800 bg-gray-100 border-gray-200 placeholder-gray-400 dark:text-white text-black focus:ring-green-500 focus:border-green-500" placeholder="Muhammad Ali" required />

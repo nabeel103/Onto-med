@@ -5,8 +5,8 @@ const Practitioner_view_reports = () => {
   return (
     <div className='text-black dark:text-white flex-col mx-auto'>
         <div className='max-w-[800px] mt-[46px] mb-[76px] w-full mx-auto my-auto text-left flex flex-col'>
-            <h1 className='md:text-7xl sm:text-6xl text-4xl font-bold md:py-6'>Reports</h1>
-            <h1 className='text-green-500 '>View all Reports</h1>
+            <h1 className='md:text-7xl sm:text-6xl text-4xl font-bold md:py-6 ml-3'>Reports</h1>
+            <h1 className='text-green-500 ml-3'>View all Reports</h1>
             
         </div>
 

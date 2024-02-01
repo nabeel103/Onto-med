@@ -3,6 +3,7 @@ import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./components/Login";
+import Signup from "./components/Signup";
 import Admin_navbar from "./components/admin/Admin_navbar";
 import Admin_dashboard from "./components/admin/Admin_dashboard";
 import Admin_view_user from "./components/admin/Admin_view_user";
@@ -49,15 +50,17 @@ import Knowledgeengr_view_report from "./components/knowledge_engineer/Knowledge
 
 
 
+
 function App() {
   return (
     <BrowserRouter>
     <div >
       <Routes>
         {/* Nested routing for Navigation bar */}
-        <Route path="/" element={<Navbar />}>
+        <Route path="/" element={<Navbar/>}>
           <Route path="" element={<Hero />}/>
           <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
         </Route>
 
         <Route path="/admin" element={<Admin_navbar />}>

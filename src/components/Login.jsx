@@ -1,6 +1,7 @@
 import React from 'react'
 
 const Login = () => {
+    
   return (
     
 
@@ -40,7 +41,7 @@ const Login = () => {
 
             <p class="mt-10 text-center text-sm text-gray-500">
             Not a member?
-            <a href="#" class="font-semibold leading-6 text-green-500  hover:text-green-400"> Create a new account</a>
+            <a href="/signup" class="font-semibold leading-6 text-green-500  hover:text-green-400"> Create a new account</a>
             </p>
 
             

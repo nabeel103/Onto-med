@@ -28,7 +28,7 @@ const Patient_navbar = () => {
             </li>
             <li className='p-4 dark:hover:text-white hover:text-black mt-1'><Link to = "/patient/history">History</Link></li>
             <li className='p-4 dark:hover:text-white hover:text-black mt-1'><Link to = "/patient/viewreport">Reports</Link></li>
-            <li className='p-4 dark:hover:text-white hover:text-black mt-1'><Link to = "/patient/viewprofile">Profile</Link></li>
+            <li className='p-4 dark:hover:text-white hover:text-black mt-1'><Link to = "/patient/viewprofile" >Profile</Link></li>
           </ul>
 
           
@@ -38,14 +38,14 @@ const Patient_navbar = () => {
           </div>
   
           {/* COLLAPSED BAR  */}
-          <div className={nav ? 'fixed  left-0 top-0 w-[60%] h-screen border-r border-r-gray-100 dark:border-r-gray-900 bg-white dark:bg-black  transition-[left]   ease-in-out duration-500' : 'fixed left-[-100%]'}>
+          <div className={nav ? 'fixed left-0 top-0 w-[60%] h-screen border-r border-r-gray-100 dark:border-r-gray-900 bg-white dark:bg-black transition-[left] ease-in-out duration-500 z-50' : 'fixed left-[-100%]'}>
             <h1 className='w-full pt-4 text-3xl font-bold text-green-500 hover:text-green-400 m-4'><Link to = "/patient">OntoMed</Link></h1>
   
             <ul className='pt-12 uppercase p-4 text-gray-300'>
-              <li className='p-4 border-b dark:border-gray-600 border-gray-300 text-black dark:hover:text-white hover:text-black whitespace-nowrap'><Link to = "/patient/adddiagnosis" onClick={handleNav}><AiFillPlusCircle className='mt-1 mr-1 w-4 h-4 my-auto'/> Diagnosis</Link></li>
-              <li className='p-4 border-b dark:border-gray-600 border-gray-300 text-black dark:hover:text-white hover:text-black'><Link to = "/patient/history" onClick={handleNav}>History</Link></li>
-              <li className='p-4 border-b dark:border-gray-600 border-gray-300 text-black dark:hover:text-white hover:text-black'><Link to = "/patient/viewreport">Reports</Link></li>
-              <li className='p-4 border-b dark:border-gray-600 border-gray-300 text-black dark:hover:text-white hover:text-black'><Link to = "/patient/viewprofile">Profile</Link></li>
+              <li className='p-4 border-b dark:border-gray-600 border-gray-300 text-black dark:text-white dark:hover:text-white hover:text-black whitespace-nowrap'><Link to = "/patient/adddiagnosis" onClick={handleNav}><AiFillPlusCircle className='mt-1 mr-1 w-4 h-4 my-auto'/> Diagnosis</Link></li>
+              <li className='p-4 border-b dark:border-gray-600 border-gray-300 text-black dark:text-white dark:hover:text-white hover:text-black'><Link to = "/patient/history" onClick={handleNav}>History</Link></li>
+              <li className='p-4 border-b dark:border-gray-600 border-gray-300 text-black dark:text-white dark:hover:text-white hover:text-black'><Link to = "/patient/viewreport" onClick={handleNav}>Reports</Link></li>
+              <li className='p-4 border-b dark:border-gray-600 border-gray-300 text-black dark:text-white dark:hover:text-white hover:text-black'><Link to = "/patient/viewprofile" onClick={handleNav}>Profile</Link></li>
             </ul>
           </div>
           
