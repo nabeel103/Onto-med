@@ -29,13 +29,13 @@ const Knowledgeengr_add_rule = () => {
 
           
           <table class="min-w-[800px] mt-5 text-sm text-left rtl:text-right  ">
-              <thead class=" text-xs text-gray-500 uppercase bg-black border-b  border-gray-800 ">
+              <thead class=" text-xs text-gray-500 uppercase bg-white dark:bg-black border-b  border-gray-200 dark:border-gray-800 ">
                   <tr>
                   </tr>
               </thead>
               <tbody>
               
-                  <tr class="bg-black border-b  border-gray-800 hover:bg-gray-900">
+                  <tr class="dark:bg-black bg-white border-b  dark:border-gray-900 border-gray-200 hover:dark:bg-gray-900 ">
                       <td class="px-3 py-3">
                         <button class="text-gray-700 hover:text-red-500"><AiFillDelete/></button>
                       </td>
@@ -43,7 +43,7 @@ const Knowledgeengr_add_rule = () => {
                           Pain in the chest
                       </td>
                   </tr>
-                  <tr class="bg-black border-b  border-gray-800 hover:bg-gray-900">
+                  <tr class="dark:bg-black bg-white border-b  dark:border-gray-900 border-gray-200 hover:dark:bg-gray-900 ">
                       <td class="px-3 py-3">
                       <button class="text-gray-700 hover:text-red-500"><AiFillDelete/></button>
                       </td>
@@ -51,7 +51,7 @@ const Knowledgeengr_add_rule = () => {
                           Fever
                       </td>
                   </tr>
-                  <tr class="bg-black border-b  border-gray-800 hover:bg-gray-900">
+                  <tr class="dark:bg-black bg-white border-b  dark:border-gray-900 border-gray-200 hover:dark:bg-gray-900 ">
                       <td class="px-3 py-3">
                       <button class="text-gray-700 hover:text-red-500"><AiFillDelete/></button>
                       </td>
@@ -74,12 +74,12 @@ const Knowledgeengr_add_rule = () => {
 
           
           <table class="min-w-[800px] mt-5 text-sm text-left rtl:text-right  ">
-              <thead class=" text-xs text-gray-500 uppercase bg-black border-b  border-gray-800 ">
+              <thead class=" text-xs text-gray-500 uppercase bg-white dark:bg-black border-b  border-gray-200 dark:border-gray-800 ">
                   <tr>
                   </tr>
               </thead>
               <tbody>
-                  <tr class="bg-black border-b  border-gray-800 hover:bg-gray-900">
+                  <tr class="dark:bg-black bg-white border-b  dark:border-gray-900 border-gray-200 hover:dark:bg-gray-900 ">
                   <td class="px-3 py-3">
                       <button class="text-gray-700 hover:text-red-500"><AiFillDelete/></button>
                       </td>
@@ -87,7 +87,7 @@ const Knowledgeengr_add_rule = () => {
                           What are your daily stress levels?
                       </td>
                   </tr>
-                  <tr class="bg-black border-b  border-gray-800 hover:bg-gray-900">
+                  <tr class="dark:bg-black bg-white border-b  dark:border-gray-900 border-gray-200 hover:dark:bg-gray-900 ">
                   <td class="px-3 py-3">
                       <button class="text-gray-700 hover:text-red-500"><AiFillDelete/></button>
                       </td>
@@ -105,7 +105,7 @@ const Knowledgeengr_add_rule = () => {
             
             <input type="text" id="large-input" class="block w-[350px] text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-green-500 focus:border-green-500 dark:bg-gray-900 dark:border-gray-800 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500"/>
             <div class="relative ml-2 ">
-              <select class="text-sm rounded-lg block w-full p-2.5 bg-gray-900 border-gray-800 placeholder-gray-400 dark:text-white text-black focus:ring-green-500 focus:border-green-500" id="grid-state">
+              <select class="text-sm rounded-lg block w-full p-2.5 bg-gray-100 dark:bg-gray-900 border-gray-200 dark:border-gray-800 placeholder-gray-400 dark:text-white text-black focus:ring-green-500 focus:border-green-500" id="grid-state">
               <option>Diet</option>
               <option>Medicine</option>
               <option>Exercise</option>
@@ -122,12 +122,12 @@ const Knowledgeengr_add_rule = () => {
 
           
           <table class="min-w-[800px] mt-5 text-sm text-left rtl:text-right dark:text-white text-black ">
-              <thead class=" text-xs text-gray-500 uppercase bg-black border-b  border-gray-800 ">
+              <thead class=" text-xs text-gray-500 uppercase bg-white dark:bg-black border-b  border-gray-200 dark:border-gray-800 ">
                   <tr>
                   </tr>
               </thead>
               <tbody>
-                  <tr class="bg-black border-b  border-gray-800 hover:bg-gray-900">
+                  <tr class="dark:bg-black bg-white border-b  dark:border-gray-900 border-gray-200 hover:dark:bg-gray-900 ">
                   <td class="px-3 py-3">
                       <button class="text-gray-700 hover:text-red-500"><AiFillDelete/></button>
                       </td>
@@ -144,7 +144,7 @@ const Knowledgeengr_add_rule = () => {
                         Quick
                       </td>
                   </tr>
-                  <tr class="bg-black border-b  border-gray-800 hover:bg-gray-900">
+                  <tr class="dark:bg-black bg-white border-b  dark:border-gray-900 border-gray-200 hover:dark:bg-gray-900 ">
                   <td class="px-3 py-3">
                       <button class="text-gray-700 hover:text-red-500"><AiFillDelete/></button>
                       </td>
@@ -161,7 +161,7 @@ const Knowledgeengr_add_rule = () => {
                       Quick
                       </td>
                   </tr>
-                  <tr class="bg-black border-b  border-gray-800 hover:bg-gray-900">
+                  <tr class="dark:bg-black bg-white border-b  dark:border-gray-900 border-gray-200 hover:dark:bg-gray-900 ">
                   <td class="px-3 py-3">
                       <button class="text-gray-700 hover:text-red-500"><AiFillDelete/></button>
                       </td>

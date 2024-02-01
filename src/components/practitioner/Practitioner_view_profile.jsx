@@ -5,7 +5,7 @@ import images from '../..'
 
 const Practitioner_view_profile = () => {
   return (
-    <div className='text-white  flex-col mx-auto'>
+    <div className='text-black dark:text-white flex-col mx-auto'>
         
         <div class="grid grid-cols-2 max-w-[800px] mx-auto">
             <div className='max-w-[800px] mt-[46px] mb-[76px] w-full mx-auto my-auto text-left flex flex-col'>

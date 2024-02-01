@@ -33,7 +33,7 @@ const Hero = () => {
 
         </div>
         <div class="hidden lg:mt-0 max-h-65 w-65 justify-center lg:col-span-5 lg:flex">
-          <img class="rotate rounded-full"  src={images.arabesque} alt="user"/>
+          <img class="rotate rounded-full"  src={images.arabesque2} alt="user"/>
         </div>                
     </div>
 </section>

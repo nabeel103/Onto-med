@@ -7,6 +7,7 @@ const images = {
     person: require('./components/images/sample_person.jpeg'),
     login: require('./components/images/login.png'),
     arabesque: require('./components/images/arabesque.jpg'),
+    arabesque2: require('./components/images/arabesque2.jpg'),
 }
 export default images;
 

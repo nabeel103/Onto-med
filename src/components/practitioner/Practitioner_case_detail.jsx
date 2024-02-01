@@ -7,7 +7,7 @@ const Practitioner_case_detail = () => {
     const navigate = useNavigate();
 
   return (
-    <div className='text-white  flex-col mx-auto'>
+    <div className='text-black dark:text-white flex-col mx-auto'>
       <div className='max-w-[800px] mt-[46px] mb-[76px] w-full mx-auto my-auto text-left flex flex-col'>
         <h1 className='md:text-7xl sm:text-6xl text-4xl font-bold md:py-6'>Cases</h1>
         <h1 className='text-green-500 '>Detail of a particular case</h1>
@@ -17,7 +17,7 @@ const Practitioner_case_detail = () => {
       <div class="relative overflow-x-auto w-[90%] max-w-[850px] mx-auto">
             <table class="w-full text-sm text-left rtl:text-right dark:text-white text-black ">
 
-                <thead class=" text-xs text-gray-500 uppercase bg-black border-b  border-gray-800 ">
+                <thead class=" text-xs text-gray-500 uppercase bg-white dark:bg-black border-b  border-gray-200 dark:border-gray-800 ">
                     <tr>
                         <th class="px-6 py-3">
                             Date
@@ -36,7 +36,7 @@ const Practitioner_case_detail = () => {
 
 
                 <tbody>
-                    <tr class="bg-black border-b  border-gray-800 hover:bg-gray-900">
+                    <tr class="dark:bg-black bg-white border-b  dark:border-gray-900 border-gray-200 hover:dark:bg-gray-900 ">
                         <th class="px-6 py-4 font-medium">
                             8/22/20
                         </th>
@@ -62,7 +62,7 @@ const Practitioner_case_detail = () => {
         <div class="relative overflow-x-auto w-[90%] max-w-[850px] mt-9 mx-auto">
             <table class="w-full text-sm text-left rtl:text-right dark:text-white text-black ">
 
-                <thead class=" text-xs text-gray-500 uppercase bg-black border-b  border-gray-800 ">
+                <thead class=" text-xs text-gray-500 uppercase bg-white dark:bg-black border-b  border-gray-200 dark:border-gray-800 ">
                     <tr>
                         <th class="px-6 py-3">
                             Patient Name
@@ -84,7 +84,7 @@ const Practitioner_case_detail = () => {
 
 
                 <tbody>
-                    <tr class="bg-black border-b  border-gray-800 hover:bg-gray-900">
+                    <tr class="dark:bg-black bg-white border-b  dark:border-gray-900 border-gray-200 hover:dark:bg-gray-900 ">
                     <th scope="row" class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
                             <img class="w-10 h-10 rounded-full"  src={images.person} alt="user"/>
                             <div class="ps-3">
@@ -112,8 +112,8 @@ const Practitioner_case_detail = () => {
         </div>
 
         <div class="relative overflow-x-auto w-[90%] max-w-[850px] mt-9 mx-auto">
-        <table class="w-full text-sm text-left rtl:text-right dark:text-white text-black">
-                <thead class="text-xs text-gray-500 uppercase bg-black border-b  border-gray-800">
+        <table class="w-full text-sm text-left rtl:text-right text-black dark:text-white ">
+                <thead class=" text-xs text-gray-500 uppercase dark:bg-black bg-white border-b  dark:border-gray-900 border-gray-200 ">
                     <tr>
                         <th scope="col" class="px-6 py-3">
                             Symptom
@@ -127,7 +127,7 @@ const Practitioner_case_detail = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="bg-black border-b  border-gray-800 hover:bg-gray-900">
+                    <tr class="dark:bg-black bg-white border-b  dark:border-gray-900 border-gray-200 hover:dark:bg-gray-900 ">
                        
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             Pain in abdomen
@@ -141,7 +141,7 @@ const Practitioner_case_detail = () => {
                     </tr>
                 </tbody>
                 <tbody>
-                    <tr class="bg-black border-b  border-gray-800 hover:bg-gray-900">
+                    <tr class="dark:bg-black bg-white border-b  dark:border-gray-900 border-gray-200 hover:dark:bg-gray-900 ">
                         
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             Headache
@@ -154,7 +154,7 @@ const Practitioner_case_detail = () => {
                         </td>
                     </tr>
                 </tbody><tbody>
-                    <tr class="bg-black border-b  border-gray-800 hover:bg-gray-900">
+                    <tr class="dark:bg-black bg-white border-b  dark:border-gray-900 border-gray-200 hover:dark:bg-gray-900 ">
                      
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             Fever
@@ -173,7 +173,7 @@ const Practitioner_case_detail = () => {
         <div class="relative overflow-x-auto w-[90%] max-w-[850px] mt-9 mx-auto">
             <table class="w-full text-sm text-left rtl:text-right dark:text-white text-black ">
 
-                <thead class=" text-xs text-gray-500 uppercase bg-black border-b  border-gray-800 ">
+                <thead class=" text-xs text-gray-500 uppercase bg-white dark:bg-black border-b  border-gray-200 dark:border-gray-800 ">
                     <tr>
                         <th class="px-6 py-3">
                             Prescription
@@ -191,7 +191,7 @@ const Practitioner_case_detail = () => {
                 </thead>
 
                 <tbody>
-                    <tr class="bg-black border-b  border-gray-800 hover:bg-gray-900">
+                    <tr class="dark:bg-black bg-white border-b  dark:border-gray-900 border-gray-200 hover:dark:bg-gray-900 ">
                         <th class="px-6 py-4 font-light">
                         Rope skipping	
                         </th>

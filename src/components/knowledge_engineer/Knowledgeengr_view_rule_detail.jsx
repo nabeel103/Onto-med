@@ -6,7 +6,7 @@ const Knowledgeengr_view_rule_detail = () => {
   const navigate = useNavigate();
 
   return (
-    <div className='text-white  flex-col mx-auto'>
+    <div className='text-black dark:text-white flex-col mx-auto'>
       <div className='max-w-[800px] mt-[46px] mb-[76px] w-full mx-auto my-auto text-left flex flex-col'>
         <h1 className='md:text-7xl sm:text-6xl text-4xl font-bold md:py-6'>Rules</h1>
         <h1 className='text-green-500 '>Details of a particular rule</h1>
@@ -16,7 +16,7 @@ const Knowledgeengr_view_rule_detail = () => {
       <div class="relative overflow-x-auto w-[90%] max-w-[850px] mx-auto">
             <table class="w-full text-sm text-left rtl:text-right dark:text-white text-black ">
 
-                <thead class=" text-xs text-gray-500 uppercase bg-black border-b  border-gray-800 ">
+                <thead class=" text-xs text-gray-500 uppercase bg-white dark:bg-black border-b  border-gray-200 dark:border-gray-800 ">
                     <tr>
                         <th class="px-6 py-3">
                             Date Added
@@ -29,7 +29,7 @@ const Knowledgeengr_view_rule_detail = () => {
 
 
                 <tbody>
-                    <tr class="bg-black border-b  border-gray-800 hover:bg-gray-900">
+                    <tr class="dark:bg-black bg-white border-b  dark:border-gray-900 border-gray-200 hover:dark:bg-gray-900 ">
                         <th class="px-6 py-4 font-medium">
                             8/22/20
                         </th>
@@ -42,8 +42,8 @@ const Knowledgeengr_view_rule_detail = () => {
         </div>
 
         <div class="relative overflow-x-auto w-[90%] max-w-[850px] mt-9 mx-auto">
-        <table class="w-full text-sm text-left rtl:text-right dark:text-white text-black">
-                <thead class="text-xs text-gray-500 uppercase bg-black border-b  border-gray-800">
+        <table class="w-full text-sm text-left rtl:text-right text-black dark:text-white ">
+                <thead class=" text-xs text-gray-500 uppercase dark:bg-black bg-white border-b  dark:border-gray-900 border-gray-200 ">
                     <tr>
                         <th scope="col" class="px-6 py-3">
                             Symptom
@@ -57,7 +57,7 @@ const Knowledgeengr_view_rule_detail = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="bg-black border-b  border-gray-800 hover:bg-gray-900">
+                    <tr class="dark:bg-black bg-white border-b  dark:border-gray-900 border-gray-200 hover:dark:bg-gray-900 ">
                        
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             Pain in abdomen
@@ -71,7 +71,7 @@ const Knowledgeengr_view_rule_detail = () => {
                     </tr>
                 </tbody>
                 <tbody>
-                    <tr class="bg-black border-b  border-gray-800 hover:bg-gray-900">
+                    <tr class="dark:bg-black bg-white border-b  dark:border-gray-900 border-gray-200 hover:dark:bg-gray-900 ">
                         
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             Headache
@@ -84,7 +84,7 @@ const Knowledgeengr_view_rule_detail = () => {
                         </td>
                     </tr>
                 </tbody><tbody>
-                    <tr class="bg-black border-b  border-gray-800 hover:bg-gray-900">
+                    <tr class="dark:bg-black bg-white border-b  dark:border-gray-900 border-gray-200 hover:dark:bg-gray-900 ">
                      
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             Fever
@@ -103,7 +103,7 @@ const Knowledgeengr_view_rule_detail = () => {
         <div class="relative overflow-x-auto w-[90%] max-w-[850px] mt-9 mx-auto">
             <table class="w-full text-sm text-left rtl:text-right dark:text-white text-black ">
 
-                <thead class=" text-xs text-gray-500 uppercase bg-black border-b  border-gray-800 ">
+                <thead class=" text-xs text-gray-500 uppercase bg-white dark:bg-black border-b  border-gray-200 dark:border-gray-800 ">
                     <tr>
                         <th class="px-6 py-3">
                             Questions
@@ -112,12 +112,12 @@ const Knowledgeengr_view_rule_detail = () => {
                 </thead>
 
                 <tbody>
-                    <tr class="bg-black border-b  border-gray-800 hover:bg-gray-900">
+                    <tr class="dark:bg-black bg-white border-b  dark:border-gray-900 border-gray-200 hover:dark:bg-gray-900 ">
                         <th class="px-6 py-4 font-light">
                         What are your daily stress levels?
                         </th>
                     </tr>
-                    <tr class="bg-black border-b  border-gray-800 hover:bg-gray-900">
+                    <tr class="dark:bg-black bg-white border-b  dark:border-gray-900 border-gray-200 hover:dark:bg-gray-900 ">
                         <th class="px-6 py-4 font-light">
                         How many siblings do you have?
                         </th>
@@ -129,7 +129,7 @@ const Knowledgeengr_view_rule_detail = () => {
         <div class="relative overflow-x-auto w-[90%] max-w-[850px] mt-9 mx-auto">
             <table class="w-full text-sm text-left rtl:text-right dark:text-white text-black ">
 
-                <thead class=" text-xs text-gray-500 uppercase bg-black border-b  border-gray-800 ">
+                <thead class=" text-xs text-gray-500 uppercase bg-white dark:bg-black border-b  border-gray-200 dark:border-gray-800 ">
                     <tr>
                         <th class="px-6 py-3">
                             Prescription
@@ -147,7 +147,7 @@ const Knowledgeengr_view_rule_detail = () => {
                 </thead>
 
                 <tbody>
-                    <tr class="bg-black border-b  border-gray-800 hover:bg-gray-900">
+                    <tr class="dark:bg-black bg-white border-b  dark:border-gray-900 border-gray-200 hover:dark:bg-gray-900 ">
                         <th class="px-6 py-4 font-light">
                         Rope skipping	
                         </th>

@@ -4,7 +4,7 @@ import { AiFillInfoCircle } from 'react-icons/ai';
 
 const Researcher_view_cases = () => {
   return (
-    <div className='text-white  flex-col mx-auto'>
+    <div className='text-black dark:text-white flex-col mx-auto'>
       <div className='max-w-[800px] mt-[46px] mb-[76px] w-full mx-auto my-auto text-left flex flex-col'>
         <h1 className='md:text-7xl sm:text-6xl text-4xl font-bold md:py-6'>Cases</h1>
         <h1 className='text-green-500 '>A log of all cases</h1>
@@ -14,7 +14,7 @@ const Researcher_view_cases = () => {
       <div class="relative overflow-x-auto w-[90%] max-w-[1230px] mx-auto">
             <table class="w-full text-sm text-left rtl:text-right dark:text-white text-black ">
 
-                <thead class=" text-xs text-gray-500 uppercase bg-black border-b  border-gray-800 ">
+                <thead class=" text-xs text-gray-500 uppercase bg-white dark:bg-black border-b  border-gray-200 dark:border-gray-800 ">
                     <tr>
                         <th class="px-6 py-3">
                             #
@@ -42,7 +42,7 @@ const Researcher_view_cases = () => {
 
 
                 <tbody>
-                    <tr class="bg-black border-b  border-gray-800 hover:bg-gray-900">
+                    <tr class="dark:bg-black bg-white border-b  dark:border-gray-900 border-gray-200 hover:dark:bg-gray-900 ">
                         
                         <td class="px-6 py-4">
                             1

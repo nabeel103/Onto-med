@@ -6,7 +6,7 @@ const Researcher_edit_case_detail = () => {
     const navigate = useNavigate();
 
   return (
-    <div className='text-white  flex-col mx-auto'>
+    <div className='text-black dark:text-white flex-col mx-auto'>
       <div className='max-w-[800px] mt-[46px] mb-[76px] w-full mx-auto my-auto text-left flex flex-col'>
         <h1 className='md:text-7xl sm:text-6xl text-4xl font-bold md:py-6'>Cases</h1>
         <h1 className='text-green-500 '>Edit rating of a case</h1>
@@ -19,7 +19,7 @@ const Researcher_edit_case_detail = () => {
         <form class="max-w-[800px] mx-auto flex-col">
             <label for="type" class="mt-5 mb-3 flex w-full text-xs text-left rtl:text-right font-bold text-gray-500 uppercase">Rating</label>
             <div class="relative ">
-                <select class="text-sm max-w-xs rounded-lg block w-full p-2.5 bg-gray-900 border-gray-800 placeholder-gray-400 dark:text-white text-black focus:ring-green-500 focus:border-green-500" id="grid-state">
+                <select class="text-sm max-w-xs rounded-lg block w-full p-2.5 bg-gray-100 border-gray-200 dark:bg-gray-900 dark:border-gray-800 placeholder-gray-400 dark:text-white text-black focus:ring-green-500 focus:border-green-500" id="grid-state">
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
