@@ -1,8 +1,10 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { AiFillUpCircle } from 'react-icons/ai'
 
 const Admin_add_user = () => {
+  const navigate = useNavigate();
+
   return (
     <div className='dark:text-white text-black  flex-col mx-auto'>
     <div className='max-w-[800px] mt-[46px] mb-[76px] w-full mx-auto my-auto text-left flex flex-col'>
@@ -75,11 +77,13 @@ const Admin_add_user = () => {
               
           </div>
         
-        <button type="submit" class=" font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center text-white text-black bg-green-500 hover:bg-green-400 focus:ring-green-800">Add User</button>
-        
-        <Link to="/admin/viewuser">
-          <button type="button" class=" mx-5 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center border border-red-600 hover:bg-red-500 hover:border-red-600 focus:ring-green-800">Back</button>
-        </Link>
+          <div>
+          <button type="submit" class="max-w-[200px] ml-3 my-2 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center text-white dark:text-black bg-green-500 hover:bg-green-400 focus:ring-green-800">Add Changes</button>
+          
+
+          <button type="button" onClick={() => navigate(-1)} class="max-w-[100px] mx-3 my-2 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center border border-red-600 hover:bg-red-500 hover:border-red-600 focus:ring-green-800">Back</button>
+
+          </div>
         
     </form>
 
