@@ -111,35 +111,59 @@ const Practitioner_view_request_detail = () => {
         </div>
 
         <div class="relative overflow-x-auto w-[90%] max-w-[850px] mt-9 mx-auto">
-            <table class="w-full text-sm text-left rtl:text-right text-white ">
-
-                <thead class=" text-xs text-gray-500 uppercase bg-black border-b  border-gray-800 ">
+        <table class="w-full text-sm text-left rtl:text-right text-white">
+                <thead class="text-xs text-gray-500 uppercase bg-black border-b  border-gray-800">
                     <tr>
-                        <th class="px-6 py-3">
-                            Symptoms
+                        <th scope="col" class="px-6 py-3">
+                            Symptom
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Intensity
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Is in family
                         </th>
                     </tr>
                 </thead>
-
                 <tbody>
                     <tr class="bg-black border-b  border-gray-800 hover:bg-gray-900">
-                        <th class="px-6 py-4 font-light">
-                        High fever
+                       
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            Pain in abdomen
                         </th>
+                        <td class="px-6 py-4">
+                            5
+                        </td>
+                        <td class="px-6 py-4">
+                            Yes
+                        </td>
                     </tr>
                 </tbody>
                 <tbody>
                     <tr class="bg-black border-b  border-gray-800 hover:bg-gray-900">
-                        <th class="px-6 py-4 font-light">
-                        Sore body
+                        
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            Headache
                         </th>
+                        <td class="px-6 py-4">
+                            2
+                        </td>
+                        <td class="px-6 py-4">
+                            No
+                        </td>
                     </tr>
-                </tbody>
-                <tbody>
+                </tbody><tbody>
                     <tr class="bg-black border-b  border-gray-800 hover:bg-gray-900">
-                        <th class="px-6 py-4 font-light">
-                        Abdominal pain
+                     
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            Fever
                         </th>
+                        <td class="px-6 py-4">
+                            5
+                        </td>
+                        <td class="px-6 py-4">
+                            Yes
+                        </td>
                     </tr>
                 </tbody>
             </table>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { AiOutlinePlus } from 'react-icons/ai'
+import { AiOutlinePlus, AiFillDelete,  } from 'react-icons/ai'
 
 
 const Patient_add_diagosis = () => {
@@ -17,31 +17,116 @@ const Patient_add_diagosis = () => {
 
             <div class="flex flex-row">
               <input type="text" id="large-input" class="block w-[350px] text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-green-500 focus:border-green-500 dark:bg-gray-900 dark:border-gray-800 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500"/>
-              <button class="ml-3 max-w-[100px] font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center border border-green-500 hover:bg-green-400 focus:ring-green-800">
+
+                                
+              <label for="min-and-max-range-slider-usage" class="sr-only">Example range</label>
+
+
+
+                <div class="bg-gray-900 border dark:border-gray-800 rounded-lg mx-2 pr-4">
+                    <label
+                        for="customRange2"
+                        class="mx-2 mt-1 text-sm inline-block text-neutral-700 dark:text-neutral-200">
+                            Intensity
+                    </label>
+
+                    <input
+                        type="range"
+                        class="mx-2 mb-4 transparent h-[4px] w-full cursor-pointer  appearance-none border-transparent accent-green-600 bg-neutral-200 dark:bg-neutral-800"
+                        min="0"
+                        max="5"
+                        id="customRange2"
+                    />
+                    
+                    
+                </div>
+
+                <div class="bg-gray-900 border dark:border-gray-800 rounded-lg mr-2 pr-4 flex flex-row">
+                    <input checked id="checked-checkbox" type="checkbox" value="" class="ml-2 w-4 h-4 my-auto text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
+                    <label for="checked-checkbox" class="ml-1 text-sm my-auto font-medium text-gray-900 dark:text-gray-300">
+                        is in family
+                    </label>  
+                </div>
+
+
+              <button class="ml-2 max-w-[100px] font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center border border-green-500 hover:bg-green-400 focus:ring-green-800">
                 <AiOutlinePlus/>
               </button>
             </div>
 
-           
-            <table class="min-w-[800px] mt-5 text-sm text-left rtl:text-right text-white ">
-                <thead class=" text-xs text-gray-500 uppercase bg-black border-b  border-gray-800 ">
+
+            <label for="basic-range-slider-usage" class="sr-only">Example range</label>
+
+
+
+
+            <table class="w-full text-sm text-left rtl:text-right text-white">
+                <thead class="text-xs text-gray-500 uppercase bg-black border-b  border-gray-800">
                     <tr>
+                        <th scope="col" class="p-4">
+                        <AiFillDelete/>
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Symptom
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Intensity
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Is in family
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr class="bg-black border-b  border-gray-800 hover:bg-gray-900">
-                        <td class="px-3 py-3">
-                            Pain in the chest
+                        <td class="w-4 p-4">
+                        <button class="text-gray-500 hover:text-red-600">
+                            <AiFillDelete/>
+                        </button>
+                        </td>
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            Pain in abdomen
+                        </th>
+                        <td class="px-6 py-4">
+                            5
+                        </td>
+                        <td class="px-6 py-4">
+                            Yes
                         </td>
                     </tr>
+                </tbody>
+                <tbody>
                     <tr class="bg-black border-b  border-gray-800 hover:bg-gray-900">
-                        <td class="px-3 py-3">
+                        <td class="w-4 p-4">
+                        <button class="text-gray-500 hover:text-red-600">
+                            <AiFillDelete/>
+                        </button>
+                        </td>
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            Headache
+                        </th>
+                        <td class="px-6 py-4">
+                            2
+                        </td>
+                        <td class="px-6 py-4">
+                            No
+                        </td>
+                    </tr>
+                </tbody><tbody>
+                    <tr class="bg-black border-b  border-gray-800 hover:bg-gray-900">
+                        <td class="w-4 p-4">
+                        <button class="text-gray-500 hover:text-red-600">
+                            <AiFillDelete/>
+                        </button>
+                        </td>
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             Fever
+                        </th>
+                        <td class="px-6 py-4">
+                            5
                         </td>
-                    </tr>
-                    <tr class="bg-black border-b  border-gray-800 hover:bg-gray-900">
-                        <td class="px-3 py-3">
-                            Weakness
+                        <td class="px-6 py-4">
+                            Yes
                         </td>
                     </tr>
                 </tbody>
