@@ -131,5 +131,7 @@ def get_patient(patient_id):
     else:
         return jsonify({"error": "Unable to connect to the database"}), 500
 
+
+
 if __name__ == '__main__':
     app.run(debug=True)
