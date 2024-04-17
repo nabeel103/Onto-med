@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, request
 import psycopg2
+from AdminUtils import get_counts,connect_to_database, get_activity_details, get_activity_with_person_details, get_diagnoses
 
 app = Flask(__name__)
 
@@ -88,12 +89,13 @@ def add_person():
         date_of_birth = data.get('date_of_birth')
         cnic = data.get('cnic')
         type = data.get('type')
+        image = data.get('image')
 
         connection = connect_to_database()
         if connection:
             cursor = connection.cursor()
-            cursor.execute("INSERT INTO person (firstname, lastname, email, password, phone, address, gender, date_of_birth, cnic, type) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s) RETURNING personid",
-                           (firstname, lastname, email, password, phone, address, gender, date_of_birth, cnic, type))
+            cursor.execute("INSERT INTO person (firstname, lastname, email, password, phone, address, gender, date_of_birth, cnic, type, image) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) RETURNING personid",
+                           (firstname, lastname, email, password, phone, address, gender, date_of_birth, cnic, type, image))
             new_person_id = cursor.fetchone()[0]
 
             # Insert into specific table based on type
@@ -123,6 +125,7 @@ def add_person():
             return jsonify({'error': 'Unable to connect to the database'}), 500
     except psycopg2.Error as e:
         return jsonify({'error': f'Database error: {e}'}), 500
+    
 
 @app.route('/person/<int:id>', methods=['PUT'])
 def update_person(id):
@@ -138,12 +141,34 @@ def update_person(id):
         date_of_birth = data.get('date_of_birth')
         cnic = data.get('cnic')
         type = data.get('type')
+        image = data.get('image')
 
         connection = connect_to_database()
         if connection:
             cursor = connection.cursor()
-            cursor.execute("UPDATE person SET firstname = %s, lastname = %s, email = %s, password = %s, phone = %s, address = %s, gender = %s, date_of_birth = %s, cnic = %s, type = %s WHERE personid = %s",
-                           (firstname, lastname, email, password, phone, address, gender, date_of_birth, cnic, type, id))
+            cursor.execute("UPDATE person SET firstname = %s, lastname = %s, email = %s, password = %s, phone = %s, address = %s, gender = %s, date_of_birth = %s, cnic = %s, type = %s, image = %s WHERE personid = %s",
+                           (firstname, lastname, email, password, phone, address, gender, date_of_birth, cnic, type, image, id))
+
+            # Update specific table based on type
+            if type == 1:
+                blood_group = data.get('blood_group')
+                occupation = data.get('occupation')
+                marital_status = data.get('marital_status')
+                cursor.execute("UPDATE patients SET blood_group = %s, occupation = %s, marital_status = %s WHERE patientid = %s",
+                               (blood_group, occupation, marital_status, id))
+            elif type == 2:
+                certification = data.get('certification')
+                experience = data.get('experience')
+                specialization = data.get('specialization')
+                issenior = data.get('issenior', False)
+                cursor.execute("UPDATE practitioners SET certification = %s, experience = %s, specialization = %s, issenior = %s WHERE practitionerid = %s",
+                               (certification, experience, specialization, issenior, id))
+            elif type == 3:
+                expertisearea = data.get('expertisearea')
+                approved = data.get('approved', False)
+                cursor.execute("UPDATE domainexperts SET expertisearea = %s, approved = %s WHERE expertid = %s",
+                               (expertisearea, approved, id))
+
             connection.commit()
             connection.close()
             return jsonify({'message': 'Person updated successfully'}), 200
@@ -151,14 +176,29 @@ def update_person(id):
             return jsonify({'error': 'Unable to connect to the database'}), 500
     except psycopg2.Error as e:
         return jsonify({'error': f'Database error: {e}'}), 500
-
+    
 @app.route('/person/<int:id>', methods=['DELETE'])
 def delete_person(id):
     try:
         connection = connect_to_database()
         if connection:
             cursor = connection.cursor()
+            
+            # Get type of person based on id
+            cursor.execute("SELECT type FROM person WHERE personid = %s", (id,))
+            person_type = cursor.fetchone()[0]
+
+            # Delete from child table based on type
+            if person_type == 1:
+                cursor.execute("DELETE FROM patients WHERE patientid = %s", (id,))
+            elif person_type == 2:
+                cursor.execute("DELETE FROM practitioners WHERE practitionerid = %s", (id,))
+            elif person_type == 3:
+                cursor.execute("DELETE FROM domainexperts WHERE expertid = %s", (id,))
+
+            # Delete from parent table
             cursor.execute("DELETE FROM person WHERE personid = %s", (id,))
+            
             connection.commit()
             connection.close()
             return jsonify({'message': 'Person deleted successfully'}), 200
@@ -167,8 +207,48 @@ def delete_person(id):
     except psycopg2.Error as e:
         return jsonify({'error': f'Database error: {e}'}), 500
 
-# CRUD operations for patients
-# Implement similar CRUD operations for practitioners and domainexperts
+
+
+# Admin routes
+@app.route('/counts', methods=['GET'])
+def get_entity_counts():
+    num_patients, num_practitioners, num_senior_practitioners = get_counts()
+    if num_patients is not None and num_practitioners is not None and num_senior_practitioners is not None:
+        return jsonify({
+            'patients': num_patients,
+            'practitioners': num_practitioners,
+            'senior_practitioners': num_senior_practitioners
+        }), 200
+    else:
+        return jsonify({'error': 'Unable to retrieve counts from the database'}), 500
+# Endpoint to get activity details (date, time, description)
+@app.route('/activity_deshboard', methods=['GET'])
+def get_activity():
+    activity_details = get_activity_details()
+    print(activity_details)
+    if activity_details:
+        return jsonify(activity_details), 200
+    else:
+        return jsonify({'error': 'Failed to retrieve activity details'}), 500
+
+# Endpoint to get activity details with person details (name, person id, description)
+@app.route('/activity', methods=['GET'])
+def get_activity_with_person():
+    activity_with_person_details = get_activity_with_person_details()
+    if activity_with_person_details:
+        return jsonify(activity_with_person_details), 200
+    else:
+        return jsonify({'error': 'Failed to retrieve activity details with person'}), 500
+
+@app.route('/diagnoses', methods=['GET'])
+def get_diagnoses_data():
+    diagnoses_data = get_diagnoses()
+    if diagnoses_data:
+        return jsonify(diagnoses_data), 200
+    else:
+        return jsonify({'error': 'Failed to retrieve diagnoses data'}), 500
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
