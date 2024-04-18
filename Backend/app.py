@@ -3,7 +3,7 @@ import psycopg2
 from patientUtils import Patient
 from AdminUtils import get_counts,connect_to_database, get_activity_details, get_activity_with_person_details, get_diagnoses
 
-
+from pracUtils import Practitioner as pr
 
 app = Flask(__name__)
 
@@ -273,6 +273,31 @@ def get_patient_data_by_id_route(patient_id):
 def patient_history_route(patient_id):
     return jsonify(Patient.get_patient_history(patient_id))
 
+
+#Practioner Routes
+@app.route('/doctor/cases/<int:doctor_id>', methods=['GET'])
+def doctor_cases_route(doctor_id):
+    return jsonify(pr.get_cases_checked_by_practitioner(doctor_id))
+
+@app.route('/practitioner/recent_cases/<int:practitioner_id>', methods=['GET'])
+def practitioner_recent_cases_route(practitioner_id):
+    recent_cases = pr.get_recent_cases(practitioner_id)
+    if 'error' in recent_cases:
+        return jsonify(recent_cases), 500
+    else:
+        formatted_cases = [{
+            'diagnosis_id': case[0],
+            'diagnosis_date': case[1],
+            'patient_id': case[2],
+            'patient_firstname': case[3],
+            'patient_lastname': case[4],
+            'disease_name': case[5]
+        } for case in recent_cases]
+        return jsonify(formatted_cases)
+    
+@app.route('/practitioner/checked_cases/<int:practitioner_id>/recent_cases', methods=['GET'])
+def get_recent_cases_route(practitioner_id):
+    return pr.get_recent_cases_by_practitioner(practitioner_id)
 
 if __name__ == '__main__':
     app.run(debug=True)
