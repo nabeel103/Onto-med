@@ -1,6 +1,8 @@
+import datetime
 from flask import jsonify
 import psycopg2
-from dbUtils import connect_to_database
+from dbUtils import connect_to_database, Database as db
+
 
 class Patient:
     @staticmethod
@@ -31,7 +33,7 @@ class Patient:
         try:
             connection = connect_to_database()
             if connection:
-                cursor = connection.cursor()
+                cursor = connection.cursor()    
                 cursor.execute("""
                     SELECT 
                         p.firstname AS patient_firstname, 
@@ -233,4 +235,44 @@ class Patient:
                 return {'error': 'Unable to connect to the database'}
         except psycopg2.Error as e:
             return {'error': f'Database error: {e}'}
+        
+    def initiate_diagnosis(patient_id, prac_id, symptoms, patient_symp, diagnose_data, ehr_data ):
+        for symptom in symptoms:
+            sname = symptom['symptomname']
+            sdesc = symptom['description']
+
+            symp_id = db.add_symptom(sname, sdesc)
+            if symp_id:
+                intensity = patient_symp['intensity']
+                family = patient_symp['is_in_family']
+                odds = patient_symp['odd_symptoms']
+                db.add_patient_symptom(patient_id, symp_id, intensity, family, odds)
+        
+
+        diagnosis_date = diagnose_data.get('diagnosis_date')
+        automated_diagnosis = diagnose_data.get('automated_diagnosis')
+        practitioner_diagnosis = diagnose_data.get('practitioner_diagnosis')
+        
+        face_image = diagnose_data.get('face_image')
+        nail_image = diagnose_data.get('nail_image')
+        hands_image = diagnose_data.get('hands_image')
+        other_image = diagnose_data.get('other_image')
+        
+
+        # Add diagnosis
+        diagnosis_id = db.add_diagnosis(patient_id, prac_id, diagnosis_date,
+                                              automated_diagnosis, practitioner_diagnosis,
+                                              0, face_image, nail_image,
+                                              hands_image, other_image, False, False,
+        )
+        print("Diagnosis ID: ", diagnosis_id)
+        if diagnosis_id:
+           
+            height = ehr_data.get('height')
+            weight = ehr_data.get('weight')
+            db.add_electronic_health_record(patient_id, height, weight, diagnosis_id)
+            return diagnosis_id
+
+
+
     

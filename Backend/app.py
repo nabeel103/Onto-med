@@ -273,6 +273,26 @@ def get_patient_data_by_id_route(patient_id):
 def patient_history_route(patient_id):
     return jsonify(Patient.get_patient_history(patient_id))
 
+@app.route('/patient/diagnose', methods=['POST'])
+def diagnose_patient():
+    try:
+        data = request.json
+
+        # Extract data from request JSON
+        patient_id = data.get('patient_id')
+        prac_id = data.get('prac_id')
+        symptoms = data.get('symptoms')
+        patient_symp = data.get('patient_symptoms')
+        diagnose_data = data.get('diagnose_data')
+        ehr_data = data.get('ehr_data')
+
+        # Call initiate_diagnosis function
+        diagnosis_id = Patient.initiate_diagnosis(patient_id, prac_id, symptoms, patient_symp, diagnose_data, ehr_data)
+
+        return jsonify({'diagnosis_id': diagnosis_id}), 200
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
 
 #Practioner Routes
 @app.route('/doctor/cases/<int:doctor_id>', methods=['GET'])
