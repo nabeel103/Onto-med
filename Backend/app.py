@@ -1,6 +1,9 @@
 from flask import Flask, jsonify, request
 import psycopg2
+from patientUtils import Patient
 from AdminUtils import get_counts,connect_to_database, get_activity_details, get_activity_with_person_details, get_diagnoses
+
+
 
 app = Flask(__name__)
 
@@ -248,6 +251,27 @@ def get_diagnoses_data():
     else:
         return jsonify({'error': 'Failed to retrieve diagnoses data'}), 500
 
+# Patients Routes 
+@app.route('/patient/profile/<int:patient_id>', methods=['GET'])
+def get_patient_profile_by_id_route(patient_id):
+    patient_profile, status_code = Patient.get_patient_profile_by_id(patient_id)
+    if status_code == 200:
+        return jsonify(patient_profile)
+    else:
+        return jsonify(patient_profile), status_code
+
+
+@app.route('/patient/report/<int:patient_id>', methods=['GET'])
+def get_patient_data_by_id_route(patient_id):
+    patient_data, status_code = Patient.get_patient_report(patient_id)
+    if status_code == 200:
+        return jsonify(patient_data)
+    else:
+        return jsonify(patient_data), status_code
+    
+@app.route('/patient/history/<int:patient_id>', methods=['GET'])
+def patient_history_route(patient_id):
+    return jsonify(Patient.get_patient_history(patient_id))
 
 
 if __name__ == '__main__':
