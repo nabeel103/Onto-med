@@ -195,7 +195,9 @@ def delete_person(id):
             if person_type == 1:
                 cursor.execute("DELETE FROM patients WHERE patientid = %s", (id,))
             elif person_type == 2:
+                print("delete from ")
                 cursor.execute("DELETE FROM practitioners WHERE practitionerid = %s", (id,))
+                print("delete from practitioners")
             elif person_type == 3:
                 cursor.execute("DELETE FROM domainexperts WHERE expertid = %s", (id,))
 
