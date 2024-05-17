@@ -97,13 +97,6 @@ class SymptomsSerializer(serializers.ModelSerializer):
         model = Symptoms
         fields = '__all__'
 
-
-
-# class PatientProfileSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = Person
-#         fields = ['image', 'firstname', 'lastname', 'email', 'phone', 'address', 'gender', 'date_of_birth', 'cnic']
-        
 class PatientProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Person
@@ -128,10 +121,10 @@ class PatientReportSerializer(serializers.Serializer):
 #         fields = ['personid', 'firstname', 'lastname', 'email', 'phone', 'password', 'address', 'gender', 'date_of_birth', 'cnic', 'type', 'image']
 
 # class PatientsSerializer(serializers.ModelSerializer):
-#     patientid = PersonSerializer()
-
-#     class Meta:
-#         model = Patients
+# #     patientid = PersonSerializer()
+#
+# #     class Meta:
+# #         model = Patients
 #         fields = ['patientid', 'blood_group', 'occupation', 'marital_status']
 
 # class PractitionersSerializer(serializers.ModelSerializer):

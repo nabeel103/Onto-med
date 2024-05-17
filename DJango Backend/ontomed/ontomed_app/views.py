@@ -3,6 +3,41 @@ from rest_framework import viewsets, status
 from rest_framework.response import Response
 from .serializers import *
 from .models import Person
+from django.contrib.auth.hashers import check_password
+import logging
+logger = logging.getLogger(__name__)
+
+
+
+# Sign Up View
+class SignUpView(APIView):
+    print("Before post")
+    def post(self, request, *args, **kwargs):
+        print("Request Method:", request.method)
+        serializer = PersonSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class LoginView(APIView):
+    def post(self, request):
+        firstname = request.data.get('firstname')
+        email = request.data.get('email')
+        password = request.data.get('password')
+
+        try:
+            # Check if the user with the provided firstname and email exists
+            person = Person.objects.get(firstname=firstname, email=email)
+
+            # Compare the provided password with the stored password
+            if password == person.password:
+                return Response({'detail': 'Login successful'}, status=status.HTTP_200_OK)
+            else:
+                return Response({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
+        except Person.DoesNotExist:
+            return Response({'error': 'User does not exist'}, status=status.HTTP_401_UNAUTHORIZED)
 
 
 class PersonViewSet(viewsets.ModelViewSet):
@@ -93,31 +128,6 @@ class PersonViewSet(viewsets.ModelViewSet):
     #         return Response({'error': f'Error occurred: {e}'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
-class PatientProfileAPIView(APIView):
-    def get(self, request, patient_id):
-        try:
-            person = Person.objects.filter(personid=patient_id, type=1).first()
-            # print(person
-            if person:
-                patient_profile = Patients.objects.filter(
-                    patientid=patient_id).first()
-                print(patient_profile)
-                if patient_profile:
-                    person_data = PersonSerializer(person)
-                    patient_data = PatientsSerializer(patient_profile)
-                    person_data.data.update(patient_data.data)
-                    # person_data.data.extend(patient_data.data)
-                    merge = dict(person_data.data)
-                    merge.update(patient_data.data)
-                    # print(new_data)
-                    return Response(merge, status=status.HTTP_200_OK)
-                else:
-                    return Response({'error': 'Patient profile not found'}, status=status.HTTP_404_NOT_FOUND)
-            else:
-                return Response({'error': 'Patient not found'}, status=status.HTTP_404_NOT_FOUND)
-        except Exception as e:
-            return Response({'error': f'Error occurred: {e}'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
 
 class PatientProfileAPIView(APIView):
     def get(self, request, patient_id):
@@ -145,6 +155,7 @@ class PatientProfileAPIView(APIView):
             return Response({'error': f'Error occurred: {e}'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
+# API for Patient Report
 class PatientReportAPIView(APIView):
     def get(self, request, patient_id):
         try:
