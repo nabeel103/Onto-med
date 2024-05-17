@@ -11,15 +11,15 @@ logger = logging.getLogger(__name__)
 
 
 # API For SignUp User
-class SignUpView(APIView):
-    print("Before post")
-    def post(self, request, *args, **kwargs):
-        print("Request Method:", request.method)
-        serializer = PersonSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+# class SignUpView(APIView):
+#     print("Before post")
+#     def post(self, request, *args, **kwargs):
+#         print("Request Method:", request.method)
+#         serializer = PersonSerializer(data=request.data)
+#         if serializer.is_valid():
+#             serializer.save()
+#             return Response(serializer.data, status=status.HTTP_201_CREATED)
+#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 #API For Login User
