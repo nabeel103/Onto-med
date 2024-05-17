@@ -4,12 +4,13 @@ from rest_framework.response import Response
 from .serializers import *
 from .models import Person
 from django.contrib.auth.hashers import check_password
+from rest_framework import generics
 import logging
 logger = logging.getLogger(__name__)
 
 
 
-# Sign Up View
+# API For SignUp User
 class SignUpView(APIView):
     print("Before post")
     def post(self, request, *args, **kwargs):
@@ -21,15 +22,15 @@ class SignUpView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+#API For Login User
 class LoginView(APIView):
     def post(self, request):
-        firstname = request.data.get('firstname')
         email = request.data.get('email')
         password = request.data.get('password')
 
         try:
             # Check if the user with the provided firstname and email exists
-            person = Person.objects.get(firstname=firstname, email=email)
+            person = Person.objects.get(email=email)
 
             # Compare the provided password with the stored password
             if password == person.password:
@@ -129,6 +130,7 @@ class PersonViewSet(viewsets.ModelViewSet):
 
 
 
+# APIS For Patient Profile
 class PatientProfileAPIView(APIView):
     def get(self, request, patient_id):
         try:
@@ -153,6 +155,134 @@ class PatientProfileAPIView(APIView):
                 return Response({'error': 'Patient not found'}, status=status.HTTP_404_NOT_FOUND)
         except Exception as e:
             return Response({'error': f'Error occurred: {e}'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+# APIS For Practitioner Profile
+class PractitionerProfileAPIView(APIView):
+    def get(self, request, practitioner_id):
+        try:
+            # Retrieve the Person and Practitioner profiles
+            person = Person.objects.filter(personid=practitioner_id, type=2).first()
+            practitioner_profile = Practitioners.objects.filter(practitionerid=practitioner_id).first()
+
+            if person:
+                if practitioner_profile:
+                    # Serialize the data
+                    person_data = PersonSerializer(person)
+                    practitioner_data = PractitionersSerializer(practitioner_profile)
+
+                    # Merge the serialized data
+                    merged_data = person_data.data.copy()
+                    merged_data.update(practitioner_data.data)
+
+                    return Response(merged_data, status=status.HTTP_200_OK)
+                else:
+                    return Response({'error': 'Practitioner profile not found'}, status=status.HTTP_404_NOT_FOUND)
+            else:
+                return Response({'error': 'Practitioner not found'}, status=status.HTTP_404_NOT_FOUND)
+        except Exception as e:
+            return Response({'error': f'Error occurred: {e}'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+
+# APIS For Diagnosis Model
+class DiagnosisListCreateAPIView(generics.ListCreateAPIView):
+    queryset = Diagnoses.objects.all()
+    serializer_class = DiagnosesSerializer
+
+class DiagnosisRetrieveUpdateDeleteAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Diagnoses.objects.all()
+    serializer_class = DiagnosesSerializer
+    lookup_field = 'diagnosis_id'
+
+
+# APIS For Disease Model
+class DiseaseListCreateAPIView(generics.ListCreateAPIView):
+    queryset = Diseases.objects.all()
+    serializer_class = DiseasesSerializer
+
+class DiseaseRetrieveUpdateDeleteAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Diseases.objects.all()
+    serializer_class = DiseasesSerializer
+    lookup_field = 'diseaseid'
+
+
+
+# APIS FOr Diagnosed Disease Model
+class DiagnosedDiseaseListCreateAPIView(generics.ListCreateAPIView):
+    queryset = DiagnosedDisease.objects.all()
+    serializer_class = DiagnosedDiseaseSerializer
+
+class DiagnosedDiseaseRetrieveUpdateDeleteAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = DiagnosedDisease.objects.all()
+    serializer_class = DiagnosedDiseaseSerializer
+    lookup_field = 'diagnosed_disease_id'
+
+
+# APIS For Prescription Model
+class PrescriptionListCreateAPIView(generics.ListCreateAPIView):
+    queryset = Prescription.objects.all()
+    serializer_class = PrescriptionSerializer
+
+class PrescriptionRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Prescription.objects.all()
+    serializer_class = PrescriptionSerializer
+    lookup_field = 'prescid'
+
+
+
+# APIS For Meething Model
+class MeetingListCreateAPIView(generics.ListCreateAPIView):
+    queryset = Meetings.objects.all()
+    serializer_class = MeetingsSerializer
+
+class MeetingRetrieveUpdateDeleteAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Meetings.objects.all()
+    serializer_class = MeetingsSerializer
+    lookup_field = 'meetingid'
+
+
+
+
+# APIS For Diagnosis Ratings
+class DiagnosisRatingsListCreateAPIView(generics.ListCreateAPIView):
+    queryset = DiagnosisRatings.objects.all()
+    serializer_class = DiagnosisRatingsSerializer
+
+class DiagnosisRatingsRetrieveUpdateDeleteAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = DiagnosisRatings.objects.all()
+    serializer_class = DiagnosisRatingsSerializer
+    lookup_field = 'ratingid'
+
+
+
+#APIS For Questions Model
+class QuestionsListCreateAPIView(generics.ListCreateAPIView):
+    queryset = Questions.objects.all()
+    serializer_class = QuestionsSerializer
+
+class QuestionsRetrieveUpdateDeleteAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Questions.objects.all()
+    serializer_class = QuestionsSerializer
+    lookup_field = 'questionid'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 # API for Patient Report

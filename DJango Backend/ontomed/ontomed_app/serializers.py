@@ -115,28 +115,3 @@ class PatientReportSerializer(serializers.Serializer):
     diseases = serializers.ListField(child=serializers.CharField())
     diagnosis = serializers.DictField()
     prescription = serializers.DictField()
-# class PersonSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = Person
-#         fields = ['personid', 'firstname', 'lastname', 'email', 'phone', 'password', 'address', 'gender', 'date_of_birth', 'cnic', 'type', 'image']
-
-# class PatientsSerializer(serializers.ModelSerializer):
-# #     patientid = PersonSerializer()
-#
-# #     class Meta:
-# #         model = Patients
-#         fields = ['patientid', 'blood_group', 'occupation', 'marital_status']
-
-# class PractitionersSerializer(serializers.ModelSerializer):
-#     person = PersonSerializer()
-#     class Meta:
-#         model = Practitioners
-        
-#         fields = ['personid', 'certification', 'experience', 'specialization', 'issenior']
-
-# class DomainExpertsSerializer(serializers.ModelSerializer):
-#     expertid = PersonSerializer()
-
-#     class Meta:
-#         model = DomainExperts
-#         fields = ['expertid', 'expertisearea', 'approved']
