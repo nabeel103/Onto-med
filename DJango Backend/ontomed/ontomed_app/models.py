@@ -40,7 +40,6 @@ class Diagnoses(models.Model):
     isconcluded = models.BooleanField()
 
 
-
 class DiagnosedDisease(models.Model):
     diagnosed_disease_id = models.AutoField(primary_key=True)
     diagnosis = models.ForeignKey(Diagnoses, on_delete=models.CASCADE)

@@ -3,42 +3,42 @@ from rest_framework import viewsets, status
 from rest_framework.response import Response
 from .serializers import *
 from .models import Person
+from rest_framework.authtoken.models import Token
+from django.shortcuts import get_object_or_404
 from django.contrib.auth.hashers import check_password
-from rest_framework import generics
+from rest_framework import generics, permissions
 import logging
 logger = logging.getLogger(__name__)
 
 
 
-# API For SignUp User
-# class SignUpView(APIView):
-#     print("Before post")
-#     def post(self, request, *args, **kwargs):
-#         print("Request Method:", request.method)
-#         serializer = PersonSerializer(data=request.data)
-#         if serializer.is_valid():
-#             serializer.save()
-#             return Response(serializer.data, status=status.HTTP_201_CREATED)
-#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
 
 #API For Login User
+
 class LoginView(APIView):
     def post(self, request):
         email = request.data.get('email')
         password = request.data.get('password')
 
         try:
-            # Check if the user with the provided firstname and email exists
+            # Check if the user with the provided email exists
             person = Person.objects.get(email=email)
 
             # Compare the provided password with the stored password
             if password == person.password:
-                return Response({'detail': 'Login successful'}, status=status.HTTP_200_OK)
+                # Generate or retrieve token for user
+
+
+                # Serialize user data
+                serializer = PersonSerializer(person)
+
+                # Return serialized user data along with token
+                return Response({'detail': 'Login successful', 'user': serializer.data}, status=status.HTTP_200_OK)
             else:
                 return Response({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
         except Person.DoesNotExist:
             return Response({'error': 'User does not exist'}, status=status.HTTP_401_UNAUTHORIZED)
+
 
 
 class PersonViewSet(viewsets.ModelViewSet):
@@ -51,7 +51,6 @@ class PersonViewSet(viewsets.ModelViewSet):
             person_serializer = self.get_serializer(data=data)
             person_serializer.is_valid(raise_exception=True)
             person_instance = person_serializer.save()
-            # print(person_instance.personid)
 
             # Insert into specific table based on type
             person_type = data.get('type')
@@ -157,6 +156,9 @@ class PatientProfileAPIView(APIView):
             return Response({'error': f'Error occurred: {e}'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
+
+
+
 # APIS For Practitioner Profile
 class PractitionerProfileAPIView(APIView):
     def get(self, request, practitioner_id):
@@ -185,15 +187,21 @@ class PractitionerProfileAPIView(APIView):
 
 
 
+
+
+
 # APIS For Diagnosis Model
 class DiagnosisListCreateAPIView(generics.ListCreateAPIView):
     queryset = Diagnoses.objects.all()
     serializer_class = DiagnosesSerializer
 
+
 class DiagnosisRetrieveUpdateDeleteAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Diagnoses.objects.all()
     serializer_class = DiagnosesSerializer
     lookup_field = 'diagnosis_id'
+
+
 
 
 # APIS For Disease Model
@@ -208,6 +216,21 @@ class DiseaseRetrieveUpdateDeleteAPIView(generics.RetrieveUpdateDestroyAPIView):
 
 
 
+
+#APIS For Patient Disease
+# List and Create view
+class PatientDiseasesListCreateAPIView(generics.ListCreateAPIView):
+    queryset = PatientDiseases.objects.all()
+    serializer_class = PatientDiseasesSerializer
+
+# Retrieve, Update, and Delete view
+class PatientDiseasesRetrieveUpdateDeleteAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = PatientDiseases.objects.all()
+    serializer_class = PatientDiseasesSerializer
+    lookup_field = 'id'
+
+
+
 # APIS FOr Diagnosed Disease Model
 class DiagnosedDiseaseListCreateAPIView(generics.ListCreateAPIView):
     queryset = DiagnosedDisease.objects.all()
@@ -219,6 +242,8 @@ class DiagnosedDiseaseRetrieveUpdateDeleteAPIView(generics.RetrieveUpdateDestroy
     lookup_field = 'diagnosed_disease_id'
 
 
+
+
 # APIS For Prescription Model
 class PrescriptionListCreateAPIView(generics.ListCreateAPIView):
     queryset = Prescription.objects.all()
@@ -228,6 +253,8 @@ class PrescriptionRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPI
     queryset = Prescription.objects.all()
     serializer_class = PrescriptionSerializer
     lookup_field = 'prescid'
+
+
 
 
 
@@ -244,6 +271,8 @@ class MeetingRetrieveUpdateDeleteAPIView(generics.RetrieveUpdateDestroyAPIView):
 
 
 
+
+
 # APIS For Diagnosis Ratings
 class DiagnosisRatingsListCreateAPIView(generics.ListCreateAPIView):
     queryset = DiagnosisRatings.objects.all()
@@ -253,6 +282,8 @@ class DiagnosisRatingsRetrieveUpdateDeleteAPIView(generics.RetrieveUpdateDestroy
     queryset = DiagnosisRatings.objects.all()
     serializer_class = DiagnosisRatingsSerializer
     lookup_field = 'ratingid'
+
+
 
 
 
@@ -271,59 +302,155 @@ class QuestionsRetrieveUpdateDeleteAPIView(generics.RetrieveUpdateDestroyAPIView
 
 
 
+# APIS For Symptoms Model
+class SymptomsListCreateAPIView(generics.ListCreateAPIView):
+    queryset = Symptoms.objects.all()
+    serializer_class = SymptomsSerializer
+
+class SymptomsRetrieveUpdateDeleteAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Symptoms.objects.all()
+    serializer_class = SymptomsSerializer
+    lookup_field = 'symptomid'
 
 
 
 
 
 
+# APIS For Patient Symptoms Model
+class PatientSymptomsListCreateAPIView(generics.ListCreateAPIView):
+    queryset = PatientSymptoms.objects.all()
+    serializer_class = PatientSymptomsSerializer
+
+class PatientSymptomsRetrieveUpdateDeleteAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = PatientSymptoms.objects.all()
+    serializer_class = PatientSymptomsSerializer
+    lookup_field = 'id'
 
 
 
+
+
+#APIS For Symptom Disease Model
+
+class SymptomDiseaseListCreateAPIView(generics.ListCreateAPIView):
+    queryset = SymptomDisease.objects.all()
+    serializer_class = SymptomDiseaseSerializer
+
+class SymptomDiseaseRetrieveUpdateDeleteAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = SymptomDisease.objects.all()
+    serializer_class = SymptomDiseaseSerializer
+    lookup_field = 'id'
+
+
+
+#APIS For Activity
+class ActivityListCreateAPIView(generics.ListCreateAPIView):
+    queryset = Activity.objects.all()
+    serializer_class = ActivitySerializer
+
+# Retrieve, Update, and Delete view
+class ActivityRetrieveUpdateDeleteAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Activity.objects.all()
+    serializer_class = ActivitySerializer
+    lookup_field = 'activity_id'
+
+
+
+#APIS For Domain Experts
+class DomainExpertsListCreateAPIView(generics.ListCreateAPIView):
+    queryset = DomainExperts.objects.all()
+    serializer_class = DomainExpertsSerializer
+
+# Retrieve, Update, and Delete view
+class DomainExpertsRetrieveUpdateDeleteAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = DomainExperts.objects.all()
+    serializer_class = DomainExpertsSerializer
+    lookup_field = 'expertid'
+
+
+
+
+# APIS For EHR Model
+class ElectronicHealthRecordsListCreateAPIView(generics.ListCreateAPIView):
+    queryset = ElectronicHealthRecords.objects.all()
+    serializer_class = ElectronicHealthRecordsSerializer
+
+# Retrieve, Update, and Delete view
+class ElectronicHealthRecordsRetrieveUpdateDeleteAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = ElectronicHealthRecords.objects.all()
+    serializer_class = ElectronicHealthRecordsSerializer
+    lookup_field = 'ehrid'
+
+
+
+
+# APIS For Knowledge Entries Model
+class KnowledgeEntriesListCreateAPIView(generics.ListCreateAPIView):
+    queryset = KnowledgeEntries.objects.all()
+    serializer_class = KnowledgeEntriesSerializer
+
+# Retrieve, Update, and Delete view
+class KnowledgeEntriesRetrieveUpdateDeleteAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = KnowledgeEntries.objects.all()
+    serializer_class = KnowledgeEntriesSerializer
+    lookup_field = 'knowledgeid'
+
+
+
+# APIS For Digital Ratings
+# List and Create view
+class DigitalDataRatingsListCreateAPIView(generics.ListCreateAPIView):
+    queryset = DigitalDataRatings.objects.all()
+    serializer_class = DigitalDataRatingsSerializer
+
+# Retrieve, Update, and Delete view
+class DigitalDataRatingsRetrieveUpdateDeleteAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = DigitalDataRatings.objects.all()
+    serializer_class = DigitalDataRatingsSerializer
+    lookup_field = 'dataratingid'
 
 
 
 
 
 # API for Patient Report
+
 class PatientReportAPIView(APIView):
     def get(self, request, patient_id):
         try:
-            patient = Patients.objects.select_related(
-                'patientid').get(patientid__personid=patient_id)
-            print(patient)
-            if patient:
-                symptoms = Symptoms.objects.filter(
-                    patientsymptoms__patient=patient).values_list('symptomname', flat=True)
-                # print(symptoms)
-                diseases = Diseases.objects.filter(
-                    patientdiseases__patient=patient).values_list('diseasename', flat=True)
-                # print(diseases)
+            patient = get_object_or_404(Patients, pk=patient_id)
 
-                diagnosis = Diagnoses.objects.filter(patient=patient).values('diagnosisdate', 'automateddiagnosis', 'practitionerdiagnosis',
-                                                                             'practitioner__personid__firstname', 'practitioner__personid__lastname',
-                                                                             'practitioner__certification', 'practitioner__specialization').first()
-                print("This is diagnosis "+diagnosis)
-                prescription = Prescription.objects.filter(patient=patient).values(
-                    'prescname', 'diet', 'amount', 'method').first()
-                print(prescription)
-                serializer = PatientReportSerializer({
-                    'patient_firstname': patient.patientid.firstname,
-                    'patient_lastname': patient.patientid.lastname,
-                    'gender': patient.patientid.gender,
-                    'date_of_birth': str(patient.patientid.date_of_birth),
-                    'cnic': patient.patientid.cnic,
-                    'blood_group': patient.blood_group,
-                    'occupation': patient.occupation,
-                    'marital_status': patient.marital_status,
-                    'symptoms': list(symptoms),
-                    'diseases': list(diseases),
-                    'diagnosis': diagnosis,
-                    'prescription': prescription
-                })
-                print(serializer.data)
-                return Response(serializer.data, status=status.HTTP_200_OK)
-            else:
-                return Response({'error': 'Patient not found'}, status=status.HTTP_404_NOT_FOUND)
+            symptoms = Symptoms.objects.filter(
+                patientsymptoms__patient=patient).values_list('symptomname', flat=True)
+
+            diseases = Diseases.objects.filter(
+                patientdiseases__patient=patient).values_list('diseasename', flat=True)
+
+            diagnosis = Diagnoses.objects.filter(patient=patient).values(
+                'diagnosisdate', 'automateddiagnosis', 'practitionerdiagnosis',
+                'practitioner__practitionerid__firstname', 'practitioner__practitionerid__lastname',
+                'practitioner__certification', 'practitioner__specialization').first()
+
+            prescription = Prescription.objects.filter(patient=patient).values(
+                'prescname', 'diet', 'amount', 'method').first()
+
+            report_data = {
+                'patient_firstname': patient.patientid.firstname,
+                'patient_lastname': patient.patientid.lastname,
+                'gender': patient.patientid.gender,
+                'date_of_birth': str(patient.patientid.date_of_birth),
+                'cnic': patient.patientid.cnic,
+                'blood_group': patient.blood_group,
+                'occupation': patient.occupation,
+                'marital_status': patient.marital_status,
+                'symptoms': list(symptoms),
+                'diseases': list(diseases),
+                'diagnosis': diagnosis,
+                'prescription': prescription
+            }
+
+            serializer = PatientReportSerializer(report_data)
+            return Response(serializer.data, status=status.HTTP_200_OK)
         except Exception as e:
             return Response({'error': f'Error occurred: {e}'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
