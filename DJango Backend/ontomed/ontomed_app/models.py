@@ -12,13 +12,17 @@ class Person(models.Model):
     date_of_birth = models.DateField()
     cnic = models.CharField(max_length=15)
     type = models.IntegerField()
-    image = models.BinaryField()
+    image = models.BinaryField(null=True)
+
+    def __str__(self):
+        return self.firstname
 
 class Activity(models.Model):
     activity_id = models.AutoField(primary_key=True)
     person = models.ForeignKey(Person, on_delete=models.CASCADE)
     description = models.TextField()
     date_time = models.DateTimeField()
+    text=models.TextField(max_length=500)
 
 class Diagnoses(models.Model):
     diagnosisid = models.AutoField(primary_key=True)
@@ -34,6 +38,7 @@ class Diagnoses(models.Model):
     other_image = models.BinaryField()
     isaccepted = models.BooleanField()
     isconcluded = models.BooleanField()
+
 
 class DiagnosedDisease(models.Model):
     diagnosed_disease_id = models.AutoField(primary_key=True)
@@ -77,9 +82,10 @@ class PatientDiseases(models.Model):
 
 class Patients(models.Model):
     patientid = models.OneToOneField(Person, primary_key=True, on_delete=models.CASCADE)
-    blood_group = models.CharField(max_length=5)
-    occupation = models.CharField(max_length=100)
-    marital_status = models.CharField(max_length=20)
+    blood_group = models.CharField(max_length=5,null=True)
+    occupation = models.CharField(max_length=100,null=True)
+    marital_status = models.CharField(max_length=20,null=True)
+
 
 class PatientSymptoms(models.Model):
     patient = models.ForeignKey('Patients', on_delete=models.CASCADE)
@@ -103,7 +109,9 @@ class Prescription(models.Model):
     method = models.CharField(max_length=100)
     patient = models.ForeignKey('Patients', on_delete=models.CASCADE)
     disease = models.ForeignKey(Diseases, on_delete=models.CASCADE)
+    practitioner = models.ForeignKey('Practitioners', on_delete=models.CASCADE)  # Add this line
     presc_date = models.DateField()
+
 
 class Questions(models.Model):
     questionid = models.AutoField(primary_key=True)

@@ -51,6 +51,16 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+        # Other authentication classes...
+    ],
+    # Other DRF settings...
+}
+
+
+
 ROOT_URLCONF = 'ontomed.urls'
 
 TEMPLATES = [
@@ -86,9 +96,10 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'Onto_Med',
         'USER': 'postgres',
-        'PASSWORD': '1234',
+        'PASSWORD': 'postgresql',
         'HOST': 'localhost',
-        'PORT': '',  
+        'PORT': ''
+
     }
 }
 
