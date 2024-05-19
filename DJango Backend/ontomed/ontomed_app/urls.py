@@ -63,6 +63,7 @@ urlpatterns = [
     path('data-ratings/', views.DigitalDataRatingsListCreateAPIView.as_view(), name='data-ratings-list-create'),
     path('data-ratings/<int:dataratingid>/', views.DigitalDataRatingsRetrieveUpdateDeleteAPIView.as_view(), name='data-ratings-detail'),
 
+    path('practitioners_list/', views.PractitionersListAPIView.as_view(), name='practitioners-list'),
 
     path('patient_report/<int:patient_id>/', views.PatientReportAPIView.as_view(), name='patient_report')
 ]

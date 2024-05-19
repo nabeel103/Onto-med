@@ -85,6 +85,8 @@ class Patients(models.Model):
     blood_group = models.CharField(max_length=5,null=True)
     occupation = models.CharField(max_length=100,null=True)
     marital_status = models.CharField(max_length=20,null=True)
+    def __str__(self):
+        return f"{self.patientid.firstname}"
 
 
 class PatientSymptoms(models.Model):
@@ -100,6 +102,9 @@ class Practitioners(models.Model):
     experience = models.IntegerField()
     specialization = models.CharField(max_length=100)
     issenior = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"{self.practitionerid.firstname} {self.practitionerid.lastname}"
 
 class Prescription(models.Model):
     prescid = models.AutoField(primary_key=True)
