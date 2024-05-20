@@ -460,3 +460,19 @@ class PatientReportAPIView(APIView):
 class PractitionersListAPIView(generics.ListAPIView):
     queryset = Practitioners.objects.prefetch_related('practitionerid').all()
     serializer_class = PractitionersSerializer
+
+
+
+
+# APIS For Diagnosis for Concluded TRUE
+class ConcludedDiagnosesListAPIView(generics.ListAPIView):
+    queryset = Diagnoses.objects.filter(isconcluded=True)
+    serializer_class = DiagnosesSerializer
+
+
+
+
+# APIS For Diagnosis for Concluded False
+class NonConcludedDiagnosesListAPIView(generics.ListAPIView):
+    queryset = Diagnoses.objects.filter(isconcluded=False)
+    serializer_class = DiagnosesSerializer
