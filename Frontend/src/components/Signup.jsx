@@ -76,6 +76,7 @@ const Signup = () => {
                 <label for="weight" class="block mb-2 text-sm font-medium dark:text-white text-black">Occupation</label>
                 <input type="text" id="weight" class="text-sm rounded-lg block w-full p-2.5 bg-gray-100 dark:bg-gray-900 border-gray-200 dark:border-gray-800 placeholder-gray-400 dark:text-white text-black focus:ring-green-500 focus:border-green-500" placeholder="Engineer" required/>
               </div>
+
               <div class="w-full ">
                   <label for="type" class="block mb-2 text-sm font-medium dark:text-white text-black">Blood Group</label>
                 <div class="relative ">
@@ -114,7 +115,7 @@ const Signup = () => {
           </div>
           
           <div>
-          <button type="submit" class="max-w-[200px] ml-3 my-2 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center text-white dark:text-black bg-green-500 hover:bg-green-400 focus:ring-green-800">Save Changes</button>
+          <button type="submit" class="max-w-[200px] ml-3 my-2 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center text-white dark:text-black bg-green-500 hover:bg-green-400 focus:ring-green-800">Create Account</button>
           
 
           <button type="button" onClick={() => navigate(-1)} class="max-w-[100px] mx-3 my-2 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center border border-red-600 hover:bg-red-500 hover:border-red-600 focus:ring-green-800">Back</button>
