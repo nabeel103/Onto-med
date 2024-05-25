@@ -47,14 +47,18 @@ class PersonViewSet(viewsets.ModelViewSet):
 
     def create(self, request, *args, **kwargs):
         try:
+            # print("This i request")
+            # print(request.data)
             data = request.data
             person_serializer = self.get_serializer(data=data)
             person_serializer.is_valid(raise_exception=True)
+            # print("_________________1pass----------------------")
             person_instance = person_serializer.save()
-
             # Insert into specific table based on type
             person_type = data.get('type')
             if person_type == 1:
+                # print("_________________2pass----------------------")
+
                 patient_serializer = PatientsSerializer(
                     data={**data, 'patientid': person_instance.personid})
                 # print(patient_serializer)
@@ -71,18 +75,19 @@ class PersonViewSet(viewsets.ModelViewSet):
                 domain_expert_serializer.is_valid(raise_exception=True)
                 domain_expert_serializer.save(expertid=person_instance)
 
-            return Response({'message': 'Person added successfully'}, status=status.HTTP_201_CREATED)
+            return Response({'message': 'Person added successfully' , "personid": person_instance.personid}, status=status.HTTP_201_CREATED)
         except Exception as e:
+            print(e)
             return Response({'error': f'Error occurred: {e}'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
     def update(self, request, *args, **kwargs):
         try:
+            
             data = request.data
             person_instance = self.get_object()
             person_serializer = self.get_serializer(person_instance, data=data)
             person_serializer.is_valid(raise_exception=True)
             person_instance = person_serializer.save()
-
             # Update specific table based on type
             person_type = data.get('type')
             if person_type == 1:
