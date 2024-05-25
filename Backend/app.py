@@ -2,6 +2,7 @@ from flask import Flask, jsonify, request
 import psycopg2
 from patientUtils import Patient
 from AdminUtils import get_counts,connect_to_database, get_activity_details, get_activity_with_person_details, get_diagnoses
+from ModelUtils import predict
 
 from pracUtils import Practitioner as pr
 
@@ -22,6 +23,21 @@ def connect_to_database():
     except psycopg2.Error as e:
         print("Unable to connect to the database:", e)
         return None
+
+@app.route('/predict', methods=['POST'])
+def AI_predict():
+    try:
+        # Get the input text from the request
+        input_text = request.json['text']
+        
+        # Call the prediction function
+        prediction = predict(input_text)
+
+      
+        # Return the predicted label as JSON response
+        return prediction
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 
 # Auth route to get JWT token
 @app.route('/login', methods=['POST'])
@@ -195,7 +211,9 @@ def delete_person(id):
             if person_type == 1:
                 cursor.execute("DELETE FROM patients WHERE patientid = %s", (id,))
             elif person_type == 2:
+                print("delete from ")
                 cursor.execute("DELETE FROM practitioners WHERE practitionerid = %s", (id,))
+                print("delete from practitioners")
             elif person_type == 3:
                 cursor.execute("DELETE FROM domainexperts WHERE expertid = %s", (id,))
 
