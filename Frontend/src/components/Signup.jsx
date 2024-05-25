@@ -58,10 +58,10 @@ const Signup = () => {
               </div>
               <div class="">
                 <label for="weight" class="block mb-2 text-sm font-medium dark:text-white text-black">Address</label>
-                <input type="text" id="weight" class="text-sm rounded-lg block w-full p-2.5 bg-gray-100 dark:bg-gray-900 border-gray-200 dark:border-gray-800 placeholder-gray-400 dark:text-white text-black focus:ring-green-500 focus:border-green-500" placeholder="78" required/>
+                <input type="text" id="weight" class="text-sm rounded-lg block w-full p-2.5 bg-gray-100 dark:bg-gray-900 border-gray-200 dark:border-gray-800 placeholder-gray-400 dark:text-white text-black focus:ring-green-500 focus:border-green-500" placeholder="UET, Lahore" required/>
               </div>
               <div class="w-full ">
-                  <label for="type" class="block mb-2 text-sm font-medium dark:text-white text-black">Blood Group</label>
+                  <label for="type" class="block mb-2 text-sm font-medium dark:text-white text-black">Marital Status</label>
                 <div class="relative ">
                   <select class="text-sm rounded-lg block w-full p-2.5 bg-gray-100 dark:bg-gray-900 border-gray-200 dark:border-gray-800 placeholder-gray-400 dark:text-white text-black focus:ring-green-500 focus:border-green-500" id="grid-state" >
                   <option>Married</option>
@@ -74,10 +74,10 @@ const Signup = () => {
 
               <div class="">
                 <label for="weight" class="block mb-2 text-sm font-medium dark:text-white text-black">Occupation</label>
-                <input type="text" id="weight" class="text-sm rounded-lg block w-full p-2.5 bg-gray-100 dark:bg-gray-900 border-gray-200 dark:border-gray-800 placeholder-gray-400 dark:text-white text-black focus:ring-green-500 focus:border-green-500" placeholder="78" required/>
+                <input type="text" id="weight" class="text-sm rounded-lg block w-full p-2.5 bg-gray-100 dark:bg-gray-900 border-gray-200 dark:border-gray-800 placeholder-gray-400 dark:text-white text-black focus:ring-green-500 focus:border-green-500" placeholder="Engineer" required/>
               </div>
               <div class="w-full ">
-                  <label for="type" class="block mb-2 text-sm font-medium dark:text-white text-black">Marital Status</label>
+                  <label for="type" class="block mb-2 text-sm font-medium dark:text-white text-black">Blood Group</label>
                 <div class="relative ">
                   <select class="text-sm rounded-lg block w-full p-2.5 bg-gray-100 dark:bg-gray-900 border-gray-200 dark:border-gray-800 placeholder-gray-400 dark:text-white text-black focus:ring-green-500 focus:border-green-500" id="grid-state" >
                   <option>A+</option>
