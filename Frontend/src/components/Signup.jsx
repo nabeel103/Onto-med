@@ -66,11 +66,13 @@ const Signup = () => {
 
       {error && <p className='text-red-500 ml-3'>{error}</p>}
 
+
       <form className='max-w-[800px] mx-auto' onSubmit={handleSubmit}>
         <div className="grid gap-6 mb-6 md:grid-cols-2 px-3">
           <div>
             <label htmlFor="firstname" className="block mb-2 text-sm font-medium dark:text-white text-black">Firstname</label>
             <input type="text" id="firstname" value={formData.firstname} onChange={handleChange} className="text-sm rounded-lg block w-full p-2.5 bg-gray-100 dark:bg-gray-900 border-gray-200 dark:border-gray-800 placeholder-gray-400 dark:text-white text-black focus:ring-green-500 focus:border-green-500" placeholder="Muhammad" required />
+
           </div>
           <div>
             <label htmlFor="lastname" className="block mb-2 text-sm font-medium dark:text-white text-black">Lastname</label>
