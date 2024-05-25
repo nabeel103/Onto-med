@@ -20,13 +20,12 @@ const Signup = () => {
               </div>
 
               <div class="w-full ">
-                  <label for="type" class="block mb-2 text-sm font-medium dark:text-white text-black">Type</label>
+                  <label for="type" class="block mb-2 text-sm font-medium dark:text-white text-black">Gender</label>
                 <div class="relative ">
-                  <select class="text-sm rounded-lg block w-full p-2.5 bg-gray-100 dark:bg-gray-900 border-gray-200 dark:border-gray-800 placeholder-gray-400 dark:text-white text-black focus:ring-green-500 focus:border-green-500" id="grid-state" disabled>
-                  <option>Patient</option>
-                  <option>Knowledge Engineer</option>
-                  <option>Practitioner</option>
-                  <option>Senior Practitioner</option>
+                  <select class="text-sm rounded-lg block w-full p-2.5 bg-gray-100 dark:bg-gray-900 border-gray-200 dark:border-gray-800 placeholder-gray-400 dark:text-white text-black focus:ring-green-500 focus:border-green-500" id="grid-state" >
+                  <option>Male</option>
+                  <option>Female</option>
+                  <option>Other</option>
                   
                   </select>
                 </div>
@@ -57,14 +56,51 @@ const Signup = () => {
                 <label for="weight" class="block mb-2 text-sm font-medium dark:text-white text-black">Weight (in kg)</label>
                 <input type="number" id="weight" class="text-sm rounded-lg block w-full p-2.5 bg-gray-100 dark:bg-gray-900 border-gray-200 dark:border-gray-800 placeholder-gray-400 dark:text-white text-black focus:ring-green-500 focus:border-green-500" placeholder="78" required/>
               </div>
+              <div class="">
+                <label for="weight" class="block mb-2 text-sm font-medium dark:text-white text-black">Address</label>
+                <input type="text" id="weight" class="text-sm rounded-lg block w-full p-2.5 bg-gray-100 dark:bg-gray-900 border-gray-200 dark:border-gray-800 placeholder-gray-400 dark:text-white text-black focus:ring-green-500 focus:border-green-500" placeholder="78" required/>
+              </div>
+              <div class="w-full ">
+                  <label for="type" class="block mb-2 text-sm font-medium dark:text-white text-black">Blood Group</label>
+                <div class="relative ">
+                  <select class="text-sm rounded-lg block w-full p-2.5 bg-gray-100 dark:bg-gray-900 border-gray-200 dark:border-gray-800 placeholder-gray-400 dark:text-white text-black focus:ring-green-500 focus:border-green-500" id="grid-state" >
+                  <option>Married</option>
+                  <option>Unmarried</option>
+                  <option>Engaged</option>
+                  </select>
+                </div>
+              </div>
+
+
+              <div class="">
+                <label for="weight" class="block mb-2 text-sm font-medium dark:text-white text-black">Occupation</label>
+                <input type="text" id="weight" class="text-sm rounded-lg block w-full p-2.5 bg-gray-100 dark:bg-gray-900 border-gray-200 dark:border-gray-800 placeholder-gray-400 dark:text-white text-black focus:ring-green-500 focus:border-green-500" placeholder="78" required/>
+              </div>
+              <div class="w-full ">
+                  <label for="type" class="block mb-2 text-sm font-medium dark:text-white text-black">Marital Status</label>
+                <div class="relative ">
+                  <select class="text-sm rounded-lg block w-full p-2.5 bg-gray-100 dark:bg-gray-900 border-gray-200 dark:border-gray-800 placeholder-gray-400 dark:text-white text-black focus:ring-green-500 focus:border-green-500" id="grid-state" >
+                  <option>A+</option>
+                  <option>A-</option>
+                  <option>B+</option>
+                  <option>B-</option>
+                  <option>AB+</option>
+                  <option>AB-</option>
+                  <option>O+</option>
+                  <option>O-</option>
+                  </select>
+                </div>
+              </div>
+
+
               
               <div class="">
                 <label for="password" class="block mb-2 text-sm font-medium dark:text-white text-black">Password</label>
-                <input type="password" id="password" class="text-sm rounded-lg block w-full p-2.5 bg-gray-100 dark:bg-gray-900 border-gray-200 dark:border-gray-800 placeholder-gray-400 dark:text-white text-black focus:ring-green-500 focus:border-green-500" placeholder="muhammadali@gmail.com" required/>
+                <input type="password" id="password" class="text-sm rounded-lg block w-full p-2.5 bg-gray-100 dark:bg-gray-900 border-gray-200 dark:border-gray-800 placeholder-gray-400 dark:text-white text-black focus:ring-green-500 focus:border-green-500" placeholder="12345678" required/>
               </div>
               <div class="">
                 <label for="confirm_password" class="block mb-2 text-sm font-medium dark:text-white text-black">Confirm Password</label>
-                <input type="password" id="confirm_password" class="text-sm rounded-lg block w-full p-2.5 bg-gray-100 dark:bg-gray-900 border-gray-200 dark:border-gray-800 placeholder-gray-400 dark:text-white text-black focus:ring-green-500 focus:border-green-500" placeholder="muhammadali@gmail.com" required/>
+                <input type="password" id="confirm_password" class="text-sm rounded-lg block w-full p-2.5 bg-gray-100 dark:bg-gray-900 border-gray-200 dark:border-gray-800 placeholder-gray-400 dark:text-white text-black focus:ring-green-500 focus:border-green-500" placeholder="12345678" required/>
               </div>
               
               <div class="block mb-2 text-sm font-medium text-gray-400">
