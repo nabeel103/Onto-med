@@ -18,6 +18,9 @@ urlpatterns = [
     path('diagnoses/', views.DiagnosisListCreateAPIView.as_view(), name='diagnosis-list-create'),
     path('diagnoses/<int:diagnosis_id>/', views.DiagnosisRetrieveUpdateDeleteAPIView.as_view(), name='diagnosis-detail'),
 
+    path('diagnoses/concluded/', views.ConcludedDiagnosesListAPIView.as_view(), name='concluded-diagnoses-list'),
+    path('diagnoses/non-concluded/', views.NonConcludedDiagnosesListAPIView.as_view(), name='non-concluded-diagnoses-list'),
+
     path('diseases/', views.DiseaseListCreateAPIView.as_view(), name='disease-list-create'),
     path('diseases/<int:diseaseid>/', views.DiseaseRetrieveUpdateDeleteAPIView.as_view(), name='disease-detail'),
 
@@ -63,6 +66,7 @@ urlpatterns = [
     path('data-ratings/', views.DigitalDataRatingsListCreateAPIView.as_view(), name='data-ratings-list-create'),
     path('data-ratings/<int:dataratingid>/', views.DigitalDataRatingsRetrieveUpdateDeleteAPIView.as_view(), name='data-ratings-detail'),
 
+    path('practitioners_list/', views.PractitionersListAPIView.as_view(), name='practitioners-list'),
 
     path('patient_report/<int:patient_id>/', views.PatientReportAPIView.as_view(), name='patient_report')
 ]

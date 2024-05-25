@@ -73,9 +73,10 @@ class PersonSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class PractitionersSerializer(serializers.ModelSerializer):
+    practitionerid = PersonSerializer()
     class Meta:
         model = Practitioners
-        fields = '__all__'
+        fields = ['practitionerid', 'certification', 'experience', 'specialization', 'issenior']
 
 class PrescriptionSerializer(serializers.ModelSerializer):
     class Meta:

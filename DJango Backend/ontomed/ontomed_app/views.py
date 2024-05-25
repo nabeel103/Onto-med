@@ -454,3 +454,25 @@ class PatientReportAPIView(APIView):
             return Response(serializer.data, status=status.HTTP_200_OK)
         except Exception as e:
             return Response({'error': f'Error occurred: {e}'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+# API For shoiwng list of practitioners
+class PractitionersListAPIView(generics.ListAPIView):
+    queryset = Practitioners.objects.prefetch_related('practitionerid').all()
+    serializer_class = PractitionersSerializer
+
+
+
+
+# APIS For Diagnosis for Concluded TRUE
+class ConcludedDiagnosesListAPIView(generics.ListAPIView):
+    queryset = Diagnoses.objects.filter(isconcluded=True)
+    serializer_class = DiagnosesSerializer
+
+
+
+
+# APIS For Diagnosis for Concluded False
+class NonConcludedDiagnosesListAPIView(generics.ListAPIView):
+    queryset = Diagnoses.objects.filter(isconcluded=False)
+    serializer_class = DiagnosesSerializer
