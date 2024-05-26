@@ -134,9 +134,6 @@ const Signup = () => {
               <option>Divorced</option>
             </select>
           </div>
-
-          {/* blank line */}
-          <div></div>
           <div>
             <label htmlFor="password" className="block mb-2 text-sm font-medium dark:text-white text-black">Password</label>
             <input type="password" id="password" value={formData.password} onChange={handleChange} className="text-sm rounded-lg block w-full p-2.5 bg-gray-100 dark:bg-gray-900 border-gray-200 dark:border-gray-800 placeholder-gray-400 dark:text-white text-black focus:ring-green-500 focus:border-green-500" placeholder="12345678" required />
