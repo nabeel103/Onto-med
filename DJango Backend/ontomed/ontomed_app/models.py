@@ -14,8 +14,7 @@ class Person(models.Model):
     type = models.IntegerField()
     image = models.BinaryField(null=True)
 
-    def __str__(self):
-        return self.firstname
+    
 
 class Activity(models.Model):
     activity_id = models.AutoField(primary_key=True)

@@ -51,31 +51,41 @@ class PersonViewSet(viewsets.ModelViewSet):
             # print(request.data)
             data = request.data
             person_serializer = self.get_serializer(data=data)
-            person_serializer.is_valid(raise_exception=True)
             # print("_________________1pass----------------------")
+            # print(data)
+            person_serializer.is_valid(raise_exception=True)
+            print("Pass          --------------------1")
             person_instance = person_serializer.save()
             # Insert into specific table based on type
+            # print(person_instance)
             person_type = data.get('type')
+            # merge = dict(person_instance)
             if person_type == 1:
                 # print("_________________2pass----------------------")
-
+                print("Pass          --------------------2")
+                
                 patient_serializer = PatientsSerializer(
                     data={**data, 'patientid': person_instance.personid})
                 # print(patient_serializer)
                 patient_serializer.is_valid(raise_exception=True)
                 patient_serializer.save(patientid=person_instance)
+                # merge.update(patient_serializer)
             elif person_type == 2:
                 practitioner_serializer = PractitionersSerializer(
                     data={**data, 'practitionerid': person_instance.personid})
                 practitioner_serializer.is_valid(raise_exception=True)
                 practitioner_serializer.save(practitionerid=person_instance)
+                # merge.update(practitioner_serializer)
             elif person_type == 3:
                 domain_expert_serializer = DomainExpertsSerializer(
                     data={**data, 'expertid': person_instance.personid})
                 domain_expert_serializer.is_valid(raise_exception=True)
                 domain_expert_serializer.save(expertid=person_instance)
-
-            return Response({'message': 'Person added successfully' , "personid": person_instance.personid}, status=status.HTTP_201_CREATED)
+                # merge.update(domain_expert_serializer)
+            
+            
+            # merge.update(patient_serializer.data)
+            return Response({'message': 'Person added successfully' , "personid":  person_instance.personid , "email" : person_instance.email}, status=status.HTTP_201_CREATED)
         except Exception as e:
             print(e)
             return Response({'error': f'Error occurred: {e}'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
