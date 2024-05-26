@@ -62,11 +62,11 @@ const Patient_edit_profile = () => {
 
               <div>
                 <label htmlFor="address" className="block mb-2 text-sm font-medium dark:text-white text-black">Address</label>
-                <input type="text" id="address" value={formData.address} onChange={handleChange} className="text-sm rounded-lg block w-full p-2.5 bg-gray-100 dark:bg-gray-900 border-gray-200 dark:border-gray-800 placeholder-gray-400 dark:text-white text-black focus:ring-green-500 focus:border-green-500" placeholder="House # 1, st. # 5 ..." required />
+                <input type="text" id="address"  className="text-sm rounded-lg block w-full p-2.5 bg-gray-100 dark:bg-gray-900 border-gray-200 dark:border-gray-800 placeholder-gray-400 dark:text-white text-black focus:ring-green-500 focus:border-green-500" placeholder="House # 1, st. # 5 ..." required />
               </div>
               <div>
                 <label htmlFor="blood_group" className="block mb-2 text-sm font-medium dark:text-white text-black">Blood Group</label>
-                <select id="blood_group" value={formData.blood_group} onChange={handleChange} className="text-sm rounded-lg block w-full p-2.5 bg-gray-100 dark:bg-gray-900 border-gray-200 dark:border-gray-800 placeholder-gray-400 dark:text-white text-black focus:ring-green-500 focus:border-green-500">
+                <select id="blood_group"  className="text-sm rounded-lg block w-full p-2.5 bg-gray-100 dark:bg-gray-900 border-gray-200 dark:border-gray-800 placeholder-gray-400 dark:text-white text-black focus:ring-green-500 focus:border-green-500">
                   <option>Select</option>
                   <option>A+</option>
                   <option>A-</option>
@@ -80,11 +80,11 @@ const Patient_edit_profile = () => {
               </div>
               <div>
                 <label htmlFor="occupation" className="block mb-2 text-sm font-medium dark:text-white text-black">Occupation</label>
-                <input type="text" id="occupation" value={formData.occupation} onChange={handleChange} className="text-sm rounded-lg block w-full p-2.5 bg-gray-100 dark:bg-gray-900 border-gray-200 dark:border-gray-800 placeholder-gray-400 dark:text-white text-black focus:ring-green-500 focus:border-green-500" placeholder="Private Employee" required />
+                <input type="text" id="occupation"  className="text-sm rounded-lg block w-full p-2.5 bg-gray-100 dark:bg-gray-900 border-gray-200 dark:border-gray-800 placeholder-gray-400 dark:text-white text-black focus:ring-green-500 focus:border-green-500" placeholder="Private Employee" required />
               </div>
               <div>
                 <label htmlFor="marital_status" className="block mb-2 text-sm font-medium dark:text-white text-black">Marital Status</label>
-                <select id="marital_status" value={formData.marital_status} onChange={handleChange} className="text-sm rounded-lg block w-full p-2.5 bg-gray-100 dark:bg-gray-900 border-gray-200 dark:border-gray-800 placeholder-gray-400 dark:text-white text-black focus:ring-green-500 focus:border-green-500">
+                <select id="marital_status"  className="text-sm rounded-lg block w-full p-2.5 bg-gray-100 dark:bg-gray-900 border-gray-200 dark:border-gray-800 placeholder-gray-400 dark:text-white text-black focus:ring-green-500 focus:border-green-500">
                   <option>Select</option>
                   <option>Married</option>
                   <option>Unmarried</option>
