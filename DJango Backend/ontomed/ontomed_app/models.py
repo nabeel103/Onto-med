@@ -16,6 +16,9 @@ class Person(models.Model):
 
     
 
+
+    
+
 class Activity(models.Model):
     activity_id = models.AutoField(primary_key=True)
     person = models.ForeignKey(Person, on_delete=models.CASCADE)

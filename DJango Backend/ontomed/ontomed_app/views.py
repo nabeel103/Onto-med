@@ -11,32 +11,38 @@ import logging
 logger = logging.getLogger(__name__)
 
 
-
-
 #API For Login User
 
 class LoginView(APIView):
     def post(self, request):
+        print(request.data)
         email = request.data.get('email')
         password = request.data.get('password')
 
         try:
             # Check if the user with the provided email exists
+            # print(email)
+            # print(password)
             person = Person.objects.get(email=email)
 
+            # print(person)
             # Compare the provided password with the stored password
+            # print("ALL DONE")
+            # print(person.password)
             if password == person.password:
                 # Generate or retrieve token for user
 
 
                 # Serialize user data
                 serializer = PersonSerializer(person)
-
+                # serializer.
+                # print( serializer.data)
                 # Return serialized user data along with token
                 return Response({'detail': 'Login successful', 'user': serializer.data}, status=status.HTTP_200_OK)
             else:
                 return Response({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
-        except Person.DoesNotExist:
+        except Person.DoesNotExist as e:
+            print(e)
             return Response({'error': 'User does not exist'}, status=status.HTTP_401_UNAUTHORIZED)
 
 
@@ -54,15 +60,15 @@ class PersonViewSet(viewsets.ModelViewSet):
             # print("_________________1pass----------------------")
             # print(data)
             person_serializer.is_valid(raise_exception=True)
-            print("Pass          --------------------1")
+            # print("Pass          --------------------1")
             person_instance = person_serializer.save()
             # Insert into specific table based on type
-            # print(person_instance)
+            print(person_instance)
             person_type = data.get('type')
             # merge = dict(person_instance)
-            if person_type == 1:
+            if person_type == '1':
                 # print("_________________2pass----------------------")
-                print("Pass          --------------------2")
+                # print("Pass          --------------------2")
                 
                 patient_serializer = PatientsSerializer(
                     data={**data, 'patientid': person_instance.personid})
@@ -70,13 +76,13 @@ class PersonViewSet(viewsets.ModelViewSet):
                 patient_serializer.is_valid(raise_exception=True)
                 patient_serializer.save(patientid=person_instance)
                 # merge.update(patient_serializer)
-            elif person_type == 2:
+            elif person_type == '2':
                 practitioner_serializer = PractitionersSerializer(
                     data={**data, 'practitionerid': person_instance.personid})
                 practitioner_serializer.is_valid(raise_exception=True)
                 practitioner_serializer.save(practitionerid=person_instance)
                 # merge.update(practitioner_serializer)
-            elif person_type == 3:
+            elif person_type == '3':
                 domain_expert_serializer = DomainExpertsSerializer(
                     data={**data, 'expertid': person_instance.personid})
                 domain_expert_serializer.is_valid(raise_exception=True)
@@ -85,6 +91,7 @@ class PersonViewSet(viewsets.ModelViewSet):
             
             
             # merge.update(patient_serializer.data)
+            # print("DONE")
             return Response({'message': 'Person added successfully' , "personid":  person_instance.personid , "email" : person_instance.email}, status=status.HTTP_201_CREATED)
         except Exception as e:
             print(e)
