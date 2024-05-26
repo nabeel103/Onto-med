@@ -1,6 +1,5 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-// import { AiFillUpCircle } from 'react-icons/ai';
 import { AiFillUpCircle, AiOutlineClose } from "react-icons/ai";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
@@ -24,7 +23,7 @@ const Signup = () => {
     blood_group: "",
     occupation: "",
     marital_status: "",
-    image: "",
+    image: null,
   });
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
@@ -42,7 +41,8 @@ const Signup = () => {
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        setFormData({ ...formData, image: reader.result });
+        const binaryString = reader.result.split(",")[1];
+        setFormData({ ...formData, image: binaryString });
         setUploadProgress(100); // Simulate upload completion
       };
 
@@ -56,8 +56,9 @@ const Signup = () => {
       reader.readAsDataURL(file);
     }
   };
+
   const handleRemoveImage = () => {
-    setFormData({ ...formData, image: "" });
+    setFormData({ ...formData, image: null });
     setUploadProgress(0);
   };
 
@@ -67,14 +68,11 @@ const Signup = () => {
   };
 
   const validatePassword = (password) => {
-    // Password should be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character
-    const re =
-      /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=.*[a-zA-Z]).{8,}$/;
+    const re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).{8,}$/;
     return re.test(password);
   };
 
   const validateForm = () => {
-    // Check if all required fields are filled
     const requiredFields = [
       "firstname",
       "lastname",
@@ -136,29 +134,19 @@ const Signup = () => {
         process.env.REACT_APP_API_URL + "persons/",
         formData
       );
-      // console.log(response);
-      console.log(response.data.person);
 
       if (response.status === 201) {
-        // const { personId } = response.data.personid;
-        // // Store the person ID in localStorage for security
-        // console.log(personId);
-        // localStorage.setItem("personid", response.data.personid);
-        // localStorage.setItem("email", response.data.email);
-        console.log(" successful. Redirecting...");
-
         setSuccess("Signup successful. Redirecting...");
         toast.success("Signup successful. Redirecting...");
-        console.log("Signup successful. Redirecting...");
-        const response = await axios.post(
+
+        const loginResponse = await axios.post(
           process.env.REACT_APP_API_URL + "login/",
           formData
         );
-        console.log("Signin successful. Redirecting...");
 
-        if (response.status === 200) {
-          const { token, user } = response.data;
-          login({ ...user, token }); // Pass user data and token to login function
+        if (loginResponse.status === 200) {
+          const { token, user } = loginResponse.data;
+          login({ ...user, token });
           setLoading(false);
           setTimeout(() => {
             navigate("/patient");
@@ -274,23 +262,7 @@ const Signup = () => {
               value={formData.date_of_birth}
               onChange={handleChange}
               className="text-sm rounded-lg block w-full p-2.5 bg-gray-100 dark:bg-gray-900 border-gray-200 dark:border-gray-800 placeholder-gray-400 dark:text-white text-black focus:ring-green-500 focus:border-green-500"
-              required
-            />
-          </div>
-          <div>
-            <label
-              htmlFor="cnic"
-              className="block mb-2 text-sm font-medium dark:text-white text-black"
-            >
-              CNIC
-            </label>
-            <input
-              type="text"
-              id="cnic"
-              value={formData.cnic}
-              onChange={handleChange}
-              className="text-sm rounded-lg block w-full p-2.5 bg-gray-100 dark:bg-gray-900 border-gray-200 dark:border-gray-800 placeholder-gray-400 dark:text-white text-black focus:ring-green-500 focus:border-green-500"
-              placeholder="352027493759"
+              placeholder="08-03-1998"
               required
             />
           </div>
@@ -307,7 +279,41 @@ const Signup = () => {
               value={formData.email}
               onChange={handleChange}
               className="text-sm rounded-lg block w-full p-2.5 bg-gray-100 dark:bg-gray-900 border-gray-200 dark:border-gray-800 placeholder-gray-400 dark:text-white text-black focus:ring-green-500 focus:border-green-500"
-              placeholder="muhammadali@gmail.com"
+              placeholder="abc@gmail.com"
+              required
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="password"
+              className="block mb-2 text-sm font-medium dark:text-white text-black"
+            >
+              Password
+            </label>
+            <input
+              type="password"
+              id="password"
+              value={formData.password}
+              onChange={handleChange}
+              className="text-sm rounded-lg block w-full p-2.5 bg-gray-100 dark:bg-gray-900 border-gray-200 dark:border-gray-800 placeholder-gray-400 dark:text-white text-black focus:ring-green-500 focus:border-green-500"
+              placeholder="********"
+              required
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="confirmPassword"
+              className="block mb-2 text-sm font-medium dark:text-white text-black"
+            >
+              Confirm Password
+            </label>
+            <input
+              type="password"
+              id="confirmPassword"
+              value={formData.confirmPassword}
+              onChange={handleChange}
+              className="text-sm rounded-lg block w-full p-2.5 bg-gray-100 dark:bg-gray-900 border-gray-200 dark:border-gray-800 placeholder-gray-400 dark:text-white text-black focus:ring-green-500 focus:border-green-500"
+              placeholder="********"
               required
             />
           </div>
@@ -324,7 +330,7 @@ const Signup = () => {
               value={formData.address}
               onChange={handleChange}
               className="text-sm rounded-lg block w-full p-2.5 bg-gray-100 dark:bg-gray-900 border-gray-200 dark:border-gray-800 placeholder-gray-400 dark:text-white text-black focus:ring-green-500 focus:border-green-500"
-              placeholder="House # 1, st. # 5 ..."
+              placeholder="House#13,street#1,abc town"
               required
             />
           </div>
@@ -343,12 +349,12 @@ const Signup = () => {
             >
               <option>Select</option>
               <option>A+</option>
-              <option>A-</option>
               <option>B+</option>
-              <option>B-</option>
               <option>AB+</option>
-              <option>AB-</option>
               <option>O+</option>
+              <option>A-</option>
+              <option>B-</option>
+              <option>AB-</option>
               <option>O-</option>
             </select>
           </div>
@@ -365,7 +371,7 @@ const Signup = () => {
               value={formData.occupation}
               onChange={handleChange}
               className="text-sm rounded-lg block w-full p-2.5 bg-gray-100 dark:bg-gray-900 border-gray-200 dark:border-gray-800 placeholder-gray-400 dark:text-white text-black focus:ring-green-500 focus:border-green-500"
-              placeholder="Private Employee"
+              placeholder="Doctor"
               required
             />
           </div>
@@ -383,84 +389,79 @@ const Signup = () => {
               className="text-sm rounded-lg block w-full p-2.5 bg-gray-100 dark:bg-gray-900 border-gray-200 dark:border-gray-800 placeholder-gray-400 dark:text-white text-black focus:ring-green-500 focus:border-green-500"
             >
               <option>Select</option>
+              <option>Single</option>
               <option>Married</option>
-              <option>Unmarried</option>
               <option>Divorced</option>
+              <option>Widowed</option>
             </select>
           </div>
           <div>
             <label
-              htmlFor="password"
+              htmlFor="cnic"
               className="block mb-2 text-sm font-medium dark:text-white text-black"
             >
-              Password
+              CNIC
             </label>
             <input
-              type="password"
-              id="password"
-              value={formData.password}
+              type="text"
+              id="cnic"
+              value={formData.cnic}
               onChange={handleChange}
               className="text-sm rounded-lg block w-full p-2.5 bg-gray-100 dark:bg-gray-900 border-gray-200 dark:border-gray-800 placeholder-gray-400 dark:text-white text-black focus:ring-green-500 focus:border-green-500"
-              placeholder="12345678"
+              placeholder="35202-3456789-1"
               required
             />
           </div>
           <div>
             <label
-              htmlFor="confirmPassword"
+              htmlFor="image"
               className="block mb-2 text-sm font-medium dark:text-white text-black"
             >
-              Confirm Password
+              Upload Image
             </label>
             <input
-              type="password"
-              id="confirmPassword"
-              value={formData.confirmPassword}
-              onChange={handleChange}
+              type="file"
+              id="image"
+              accept="image/*"
+              onChange={handleImageChange}
               className="text-sm rounded-lg block w-full p-2.5 bg-gray-100 dark:bg-gray-900 border-gray-200 dark:border-gray-800 placeholder-gray-400 dark:text-white text-black focus:ring-green-500 focus:border-green-500"
-              placeholder="12345678"
-              required
             />
+            {uploadProgress > 0 && (
+              <div className="relative pt-1">
+                <div className="flex mb-2 items-center justify-between">
+                  <div>
+                    <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-green-600 bg-green-200">
+                      {uploadProgress}%
+                    </span>
+                  </div>
+                </div>
+                <div className="overflow-hidden h-2 mb-4 text-xs flex rounded bg-green-200">
+                  <div
+                    style={{ width: `${uploadProgress}%` }}
+                    className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500"
+                  ></div>
+                </div>
+              </div>
+            )}
           </div>
-          <div className="block mb-2 text-sm font-medium text-gray-400">
-            <label className="w-40 flex items-center px-4 py-2 bg-gray-100 dark:bg-gray-900 text-blue rounded-lg border border-green-500 cursor-pointer hover:border-green-500 hover:bg-blue hover:text-green-500">
-              <AiFillUpCircle className="h-8" />
-              <span className="ml-2">Add Picture</span>
-              <input
-                type="file"
-                className="hidden"
-                onChange={handleImageChange}
-              />
-            </label>
-          </div>
-
-          {/* {uploadProgress > 0 && (
-          <div className="w-full bg-gray-200 rounded-full dark:bg-gray-700 mt-2">
-            <div className="bg-green-500 text-xs font-medium text-green-100 text-center p-0.5 leading-none rounded-full" style={{ width: `${uploadProgress}%` }}>
-              {uploadProgress}%
-            </div>
-          </div>
-        )} */}
-
           {formData.image && (
-            <div className="relative mt-4">
+            <div className="flex flex-col items-center">
               <img
-                src={formData.image}
-                alt="Uploaded"
-                className="w-40 h-40 object-cover rounded-lg"
+                src={`data:image/jpeg;base64,${formData.image}`}
+                alt="Preview"
+                className="w-32 h-32 object-cover rounded-lg"
               />
               <button
                 type="button"
-                className="absolute top-0 right-0 p-1 bg-red-500 rounded-full text-white"
                 onClick={handleRemoveImage}
+                className="mt-5 text-sm text-red-500"
               >
-                <AiOutlineClose className="h-5 w-5" />
+                Remove
               </button>
             </div>
           )}
         </div>
-
-        <div>
+        <div className="max-w-[800px] mx-auto">
           <button
             type="submit"
             className="max-w-[200px] ml-3 my-2 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center text-white dark:text-black bg-green-500 hover:bg-green-400 focus:ring-green-800"

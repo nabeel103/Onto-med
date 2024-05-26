@@ -8,6 +8,7 @@ from django.shortcuts import get_object_or_404
 from django.contrib.auth.hashers import check_password
 from rest_framework import generics, permissions
 import logging
+
 logger = logging.getLogger(__name__)
 
 
@@ -15,7 +16,7 @@ logger = logging.getLogger(__name__)
 
 class LoginView(APIView):
     def post(self, request):
-        print(request.data)
+        # print(request.data)
         email = request.data.get('email')
         password = request.data.get('password')
 
@@ -38,6 +39,7 @@ class LoginView(APIView):
                 # serializer.
                 # print( serializer.data)
                 # Return serialized user data along with token
+                print(serializer.data)
                 return Response({'detail': 'Login successful', 'user': serializer.data}, status=status.HTTP_200_OK)
             else:
                 return Response({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
@@ -54,16 +56,16 @@ class PersonViewSet(viewsets.ModelViewSet):
     def create(self, request, *args, **kwargs):
         try:
             # print("This i request")
-            # print(request.data)
+            print(request.data)
             data = request.data
             person_serializer = self.get_serializer(data=data)
             # print("_________________1pass----------------------")
-            # print(data)
+            # print(data)   
             person_serializer.is_valid(raise_exception=True)
             # print("Pass          --------------------1")
             person_instance = person_serializer.save()
             # Insert into specific table based on type
-            print(person_instance)
+            # print(person_instance)
             person_type = data.get('type')
             # merge = dict(person_instance)
             if person_type == '1':
@@ -92,6 +94,7 @@ class PersonViewSet(viewsets.ModelViewSet):
             
             # merge.update(patient_serializer.data)
             # print("DONE")
+            print(person_instance.image)
             return Response({'message': 'Person added successfully' , "personid":  person_instance.personid , "email" : person_instance.email}, status=status.HTTP_201_CREATED)
         except Exception as e:
             print(e)
