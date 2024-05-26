@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/images')
 
 # Application definition
 
@@ -106,8 +106,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'Onto_Med',
         'USER': 'postgres',
-        # 'PASSWORD': 'postgresql',
-        'PASSWORD': '1234',
+        'PASSWORD': 'postgresql',
+        # 'PASSWORD': '1234',
 
         'HOST': 'localhost',
         'PORT': ''

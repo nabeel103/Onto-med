@@ -12,12 +12,9 @@ class Person(models.Model):
     date_of_birth = models.DateField()
     cnic = models.CharField(max_length=15)
     type = models.IntegerField()
-    image = models.BinaryField(null=True)
-
-    
+    image = models.ImageField(upload_to='images/', null=True, blank=True)
 
 
-    
 
 class Activity(models.Model):
     activity_id = models.AutoField(primary_key=True)
@@ -34,10 +31,10 @@ class Diagnoses(models.Model):
     automateddiagnosis = models.TextField()
     practitionerdiagnosis = models.TextField()
     regulatorrating = models.IntegerField()
-    face_image = models.BinaryField()
-    nail_image = models.BinaryField()
-    hands_image = models.BinaryField()
-    other_image = models.BinaryField()
+    face_image = models.ImageField(upload_to='images/', null=True, blank=True)
+    nail_image = models.ImageField(upload_to='images/', null=True, blank=True)
+    hands_image = models.ImageField(upload_to='images/', null=True, blank=True)
+    other_image = models.ImageField(upload_to='images/', null=True, blank=True)
     isaccepted = models.BooleanField()
     isconcluded = models.BooleanField()
 
