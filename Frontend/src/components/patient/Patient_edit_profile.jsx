@@ -17,21 +17,19 @@ const Patient_edit_profile = () => {
       <form className='max-w-[800px] mx-auto'>
       <div class="grid gap-6 mb-6 md:grid-cols-2 px-3">
               <div>
-                  <label for="Name" class="block mb-2 text-sm font-medium dark:text-white text-black">First Name</label>
-                  <input type="text" id="name" class="text-sm rounded-lg block w-full p-2.5 bg-gray-100 dark:bg-gray-900 border-gray-200 dark:border-gray-800 placeholder-gray-400 dark:text-white text-black focus:ring-green-500 focus:border-green-500" placeholder="Muhammad" required />
-              </div>
-              <div>
-                  <label for="Name" class="block mb-2 text-sm font-medium dark:text-white text-black">Last Name</label>
-                  <input type="text" id="name" class="text-sm rounded-lg block w-full p-2.5 bg-gray-100 dark:bg-gray-900 border-gray-200 dark:border-gray-800 placeholder-gray-400 dark:text-white text-black focus:ring-green-500 focus:border-green-500" placeholder="Ali" required />
+                  <label for="Name" class="block mb-2 text-sm font-medium dark:text-white text-black">Name</label>
+                  <input type="text" id="name" class="text-sm rounded-lg block w-full p-2.5 bg-gray-100 dark:bg-gray-900 border-gray-200 dark:border-gray-800 placeholder-gray-400 dark:text-white text-black focus:ring-green-500 focus:border-green-500" placeholder="Muhammad Ali" required />
               </div>
 
               <div class="w-full ">
-                  <label for="type" class="block mb-2 text-sm font-medium dark:text-white text-black">Gender</label>
+                  <label for="type" class="block mb-2 text-sm font-medium dark:text-white text-black">Type</label>
                 <div class="relative ">
                   <select class="text-sm rounded-lg block w-full p-2.5 bg-gray-100 dark:bg-gray-900 border-gray-200 dark:border-gray-800 placeholder-gray-400 dark:text-white text-black focus:ring-green-500 focus:border-green-500" id="grid-state" disabled>
-                  <option>Male</option>
-                  <option>Female</option>
-                  <option>Other</option>
+                  <option>Patient</option>
+                  <option>Knowledge Engineer</option>
+                  <option>Practitioner</option>
+                  <option>Senior Practitioner</option>
+                  
                   </select>
                 </div>
               </div>
@@ -93,8 +91,6 @@ const Patient_edit_profile = () => {
                   <option>Divorced</option>
                 </select>
               </div>
-
-              <div></div>
               
               <div class="">
                 <label for="password" class="block mb-2 text-sm font-medium dark:text-white text-black">Password</label>
