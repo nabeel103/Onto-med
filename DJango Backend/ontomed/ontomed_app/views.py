@@ -60,7 +60,7 @@ class PersonViewSet(viewsets.ModelViewSet):
             data = request.data
             person_serializer = self.get_serializer(data=data)
             # print("_________________1pass----------------------")
-            # print(data)   
+             
             person_serializer.is_valid(raise_exception=True)
             # print("Pass          --------------------1")
             person_instance = person_serializer.save()
@@ -69,18 +69,20 @@ class PersonViewSet(viewsets.ModelViewSet):
             person_type = data.get('type')
             # merge = dict(person_instance)
             if person_type == '1':
-                # print("_________________2pass----------------------")
-                # print("Pass          --------------------2")
                 
+                newData = {'patientid': person_instance.personid, 'blood_group': data.get('blood_group')[0], 'occupation': data.get('occupation')[0], 'marital_status': data.get('marital_status')[0]}
+                     
                 patient_serializer = PatientsSerializer(
-                    data={**data, 'patientid': person_instance.personid})
-                # print(patient_serializer)
+                    data={**newData, 'patientid': person_instance.personid})
+                
                 patient_serializer.is_valid(raise_exception=True)
+                
                 patient_serializer.save(patientid=person_instance)
                 # merge.update(patient_serializer)
             elif person_type == '2':
+                newData = {'practitionerid': person_instance.personid, 'certification': data.get('certification'), 'experience': data.get('experience'), 'specialization': data.get('specialization'), 'issenior': data.get('issenior')}
                 practitioner_serializer = PractitionersSerializer(
-                    data={**data, 'practitionerid': person_instance.personid})
+                    data={**newData, 'practitionerid': person_instance.personid})
                 practitioner_serializer.is_valid(raise_exception=True)
                 practitioner_serializer.save(practitionerid=person_instance)
                 # merge.update(practitioner_serializer)
@@ -99,43 +101,64 @@ class PersonViewSet(viewsets.ModelViewSet):
         except Exception as e:
             print(e)
             return Response({'error': f'Error occurred: {e}'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
     def update(self, request, *args, **kwargs):
         try:
-            
-            data = request.data
-            person_instance = self.get_object()
-            person_serializer = self.get_serializer(person_instance, data=data)
-            person_serializer.is_valid(raise_exception=True)
-            person_instance = person_serializer.save()
+            instance = self.get_object()
+            serializer = self.get_serializer(instance, data=request.data)
+            serializer.is_valid(raise_exception=True)
+            serializer.save()
+    
             # Update specific table based on type
-            person_type = data.get('type')
-            if person_type == 1:
-                patient_instance = Patients.objects.get(
-                    patientid=person_instance)
+            person_type = request.data.get('type')
+            if person_type == '1':
+                patient_data = {
+                    'blood_group': request.data.get('blood_group')[0],
+                    'occupation': request.data.get('occupation')[0],
+                    'marital_status': request.data.get('marital_status')[0]
+                }
+                patient_instance = instance.patient
                 patient_serializer = PatientsSerializer(
-                    patient_instance, data={**data, 'patientid': person_instance.personid})
+                    patient_instance, data=patient_data, partial=True)
                 patient_serializer.is_valid(raise_exception=True)
-                patient_instance = patient_serializer.save()
-            elif person_type == 2:
-                practitioner_instance = Practitioners.objects.get(
-                    practitionerid=person_instance)
+                patient_serializer.save()
+            elif person_type == '2':
+                practitioner_data = {
+                    'certification': request.data.get('certification'),
+                    'experience': request.data.get('experience'),
+                    'specialization': request.data.get('specialization'),
+                    'issenior': request.data.get('issenior')
+                }
+                practitioner_instance = instance.practitioner
                 practitioner_serializer = PractitionersSerializer(
-                    practitioner_instance, data={**data, 'practitionerid': person_instance.personid})
+                    practitioner_instance, data=practitioner_data, partial=True)
                 practitioner_serializer.is_valid(raise_exception=True)
-                practitioner_instance = practitioner_serializer.save()
-            elif person_type == 3:
-                domain_expert_instance = DomainExperts.objects.get(
-                    expertid=person_instance)
+                practitioner_serializer.save()
+            elif person_type == '3':
+                domain_expert_data = {
+                    'expert_field': request.data.get('expert_field')
+                    # Add other fields as needed
+                }
+                domain_expert_instance = instance.domain_expert
                 domain_expert_serializer = DomainExpertsSerializer(
-                    domain_expert_instance, data={**data, 'expertid': person_instance.personid})
+                    domain_expert_instance, data=domain_expert_data, partial=True)
                 domain_expert_serializer.is_valid(raise_exception=True)
-                domain_expert_instance = domain_expert_serializer.save()
-
+                domain_expert_serializer.save()
+    
             return Response({'message': 'Person updated successfully'}, status=status.HTTP_200_OK)
+        except Exception as e:
+            print(e)
+            return Response({'error': f'Error occurred: {e}'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+    
+    def retrieve(self, request, *args, **kwargs):
+        try:
+            instance = self.get_object()
+            serializer = self.get_serializer(instance)
+            return Response(serializer.data)
         except Exception as e:
             return Response({'error': f'Error occurred: {e}'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+        
     def destroy(self, request, *args, **kwargs):
         try:
             person_instance = self.get_object()
@@ -143,19 +166,20 @@ class PersonViewSet(viewsets.ModelViewSet):
             return Response({'message': 'Person deleted successfully'}, status=status.HTTP_200_OK)
         except Exception as e:
             return Response({'error': f'Error occurred: {e}'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    
+    def list(self, request, *args, **kwargs):
+        try:
+            queryset = self.filter_queryset(self.get_queryset())
+            serializer = self.get_serializer(queryset, many=True)
+            return Response(serializer.data)
+        except Exception as e:
+            return Response({'error': f'Error occurred: {e}'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-    # def list(self, request, *args, **kwargs):
-    #     try:
-    #         queryset = self.filter_queryset(self.get_queryset())
-    #         serializer = self.get_serializer(queryset, many=True)
-    #         return Response(serializer.data)
-    #     except Exception as e:
-    #         return Response({'error': f'Error occurred: {e}'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
-
+    
 
 # APIS For Patient Profile
 class PatientProfileAPIView(APIView):
+    
     def get(self, request, patient_id):
         try:
             person = Person.objects.filter(personid=patient_id, type=1).first()
@@ -180,18 +204,30 @@ class PatientProfileAPIView(APIView):
         except Exception as e:
             return Response({'error': f'Error occurred: {e}'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-
+class AllPatientProfileAPIView(APIView):
+    def get(self, request):
+        try:
+            patients = Patients.objects.all()
+            serializer = PatientsSerializer(patients, many=True)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except Exception as e:
+            return Response({'error': f'Error occurred: {e}'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
 
 # APIS For Practitioner Profile
 class PractitionerProfileAPIView(APIView):
+    # queryset = Practitioners.objects.all()
+    # serializer_class = PractitionersSerializer
+    
     def get(self, request, practitioner_id):
         try:
+
             # Retrieve the Person and Practitioner profiles
+            print(practitioner_id)
             person = Person.objects.filter(personid=practitioner_id, type=2).first()
             practitioner_profile = Practitioners.objects.filter(practitionerid=practitioner_id).first()
-
+            print(person)
             if person:
                 if practitioner_profile:
                     # Serialize the data
@@ -210,7 +246,43 @@ class PractitionerProfileAPIView(APIView):
         except Exception as e:
             return Response({'error': f'Error occurred: {e}'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+class AllPractitionerProfileAPIView(generics.ListAPIView):
+    queryset = Practitioners.objects.all()
+    serializer_class = PractitionersSerializer
 
+class Full_PractitionerProfileAPIView(APIView):
+    def get(self, request):
+        try:
+            # Retrieve the Person and Practitioner profiles
+            # Practitioners.objects.all().select_related("")
+            # print(practitioner_id)
+            persons = Person.objects.filter( type=2).all()
+            print(persons)
+            all_prac = []
+            for person in persons:
+
+                practitioner_profile = Practitioners.objects.filter(practitionerid=person.personid).first()
+
+                print(person)
+                
+                if practitioner_profile:
+                    # Serialize the data
+                    person_data = PersonSerializer(person)
+                    practitioner_data = PractitionersSerializer(practitioner_profile)
+
+                    # Merge the serialized data
+                    merged_data = person_data.data.copy()
+                    merged_data.update(practitioner_data.data)
+                    all_prac.append(merged_data)
+                    # return Response(merged_data, status=status.HTTP_200_OK)
+            # print(all_prac.typ)
+            return Response(all_prac, status=status.HTTP_200_OK)
+        except Exception as e:
+            print(e)
+            return Response({'error': f'Error occurred: {e}'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+    
 
 
 
@@ -226,6 +298,61 @@ class DiagnosisRetrieveUpdateDeleteAPIView(generics.RetrieveUpdateDestroyAPIView
     serializer_class = DiagnosesSerializer
     lookup_field = 'diagnosis_id'
 
+class MyDiagnosisPatients(APIView):
+    def get(self, request, prac_id):
+        try:
+            # print("This is request")
+            diagnoses = Diagnoses.objects.filter(practitioner=prac_id)
+            # print(diagnoses)
+            merged = []
+            for diagnosis in diagnoses:
+                patient = Patients.objects.filter(
+                    patientid=diagnosis.patient).first()
+                person = Person.objects.filter(personid=patient.patientid.personid).first()
+                # print(person)
+                person_data = PersonSerializer(person)
+                patient_data = PatientsSerializer(patient)
+                diagnoses_data = DiagnosesSerializer(diagnosis)
+
+                merged_data = person_data.data.copy()
+                merged_data.update(patient_data.data)
+                merged_data.update(diagnoses_data.data)
+
+                merged.append(merged_data)
+
+                # print(merged_data)
+            
+            return Response(merged, status=status.HTTP_200_OK)   
+
+        except Exception as e:
+            print(e)
+            return Response({'error': 'Error occurred'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+class MySpecificDiagnosisPatients(APIView):
+    def get(self, request, diag_id):
+        try:
+            # print("This is request")
+            diagnose = Diagnoses.objects.filter(diagnosisid=diag_id).first()
+            
+            patient = Patients.objects.filter(
+                patientid=diagnose.patient).first()
+            person = Person.objects.filter(personid=patient.patientid.personid).first()
+            # print(person)
+            person_data = PersonSerializer(person)
+            patient_data = PatientsSerializer(patient)
+            diagnoses_data = DiagnosesSerializer(diagnose)
+
+            merged_data = person_data.data.copy()
+            merged_data.update(patient_data.data)
+            merged_data.update(diagnoses_data.data)
+            # merged.append(merged_data)
+            # print(merged_data)
+            
+            return Response(merged_data, status=status.HTTP_200_OK)   
+
+        except Exception as e:
+            print(e)
+            return Response({'error': 'Error occurred'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
 

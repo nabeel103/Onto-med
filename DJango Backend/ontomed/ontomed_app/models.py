@@ -29,8 +29,11 @@ class Diagnoses(models.Model):
     practitioner = models.ForeignKey('Practitioners', on_delete=models.CASCADE)
     diagnosisdate = models.DateField()
     automateddiagnosis = models.TextField()
-    practitionerdiagnosis = models.TextField()
-    regulatorrating = models.IntegerField()
+    symptoms = models.TextField(null=True)
+    practitionerdiagnosis = models.TextField(null=True)
+    regulatorrating = models.IntegerField(null=True)
+    height = models.DecimalField(max_digits=5, decimal_places=2, null = True)
+    weight = models.DecimalField(max_digits=5, decimal_places=2,  null = True)
     face_image = models.ImageField(upload_to='images/', null=True, blank=True)
     nail_image = models.ImageField(upload_to='images/', null=True, blank=True)
     hands_image = models.ImageField(upload_to='images/', null=True, blank=True)
@@ -57,8 +60,7 @@ class DomainExperts(models.Model):
 class ElectronicHealthRecords(models.Model):
     ehrid = models.AutoField(primary_key=True)
     patient = models.ForeignKey('Patients', on_delete=models.CASCADE)
-    height = models.DecimalField(max_digits=5, decimal_places=2)
-    weight = models.DecimalField(max_digits=5, decimal_places=2)
+    
     diagnosis = models.ForeignKey(Diagnoses, on_delete=models.CASCADE)
 
 class KnowledgeEntries(models.Model):
@@ -91,14 +93,12 @@ class Patients(models.Model):
 class PatientSymptoms(models.Model):
     patient = models.ForeignKey('Patients', on_delete=models.CASCADE)
     symptom = models.ForeignKey('Symptoms', on_delete=models.CASCADE)
-    intensity = models.IntegerField()
-    is_in_family = models.BooleanField()
-    odd_symptoms = models.BooleanField()
+    
 
 class Practitioners(models.Model):
     practitionerid = models.OneToOneField(Person, primary_key=True, on_delete=models.CASCADE)
     certification = models.CharField(max_length=100)
-    experience = models.IntegerField()
+    experience = models.CharField(max_length=100)
     specialization = models.CharField(max_length=100)
     issenior = models.BooleanField(default=False)
 
@@ -128,7 +128,9 @@ class Questions(models.Model):
 class Symptoms(models.Model):
     symptomid = models.AutoField(primary_key=True)
     symptomname = models.CharField(max_length=100)
-    description = models.TextField()
+    intensity = models.IntegerField(null=True)
+    is_in_family = models.BooleanField(null=True)
+    odd_symptoms = models.BooleanField(null=True)
 
 
 class DigitalDataRatings(models.Model):

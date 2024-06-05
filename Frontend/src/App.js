@@ -49,7 +49,7 @@ import Knowledgeengr_view_report from "./components/knowledge_engineer/Knowledge
 
 
 
-
+// import newLogo from './assets/images/new_logo.png';
 
 function App() {
 
@@ -67,7 +67,7 @@ function App() {
         <Route path="/admin" element={<Admin_navbar />}>
           <Route path="" element={<Admin_dashboard />} />
           <Route path="viewuser" element={<Admin_view_user />} />
-          <Route path="edituser" element={<Admin_edit_user />} />
+          <Route path="edituser/*" element={<Admin_edit_user />} />
           <Route path="adduser" element={<Admin_add_user />} />
           <Route path="viewreport" element={<Admin_view_report />} />
           <Route path="viewactivity" element={<Admin_view_activity />} />

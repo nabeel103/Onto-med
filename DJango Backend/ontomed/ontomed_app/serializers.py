@@ -75,7 +75,7 @@ class PersonSerializer(serializers.ModelSerializer):
         
 
 class PractitionersSerializer(serializers.ModelSerializer):
-    practitionerid = PersonSerializer()
+    # practitionerid = PersonSerializer()
     class Meta:
         model = Practitioners
         fields = ['practitionerid', 'certification', 'experience', 'specialization', 'issenior']

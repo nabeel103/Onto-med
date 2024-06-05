@@ -1,11 +1,25 @@
 from flask import Flask, jsonify, request
+from flask_cors import CORS, cross_origin
 import psycopg2
 from patientUtils import Patient
 from AdminUtils import get_counts,connect_to_database, get_activity_details, get_activity_with_person_details, get_diagnoses
+from ModelUtils import predict
+
 
 from pracUtils import Practitioner as pr
 
 app = Flask(__name__)
+CORS(app) 
+cross_origin( 
+origins = '*',  
+methods = ['GET', 'HEAD', 'POST', 'OPTIONS', 'PUT'],  
+headers = None,  
+supports_credentials = False,  
+max_age = None,  
+send_wildcard = True,  
+always_send = True,  
+automatic_options = False
+)
 
 # PostgreSQL database configuration
 DB_HOST = 'localhost'
@@ -22,7 +36,23 @@ def connect_to_database():
     except psycopg2.Error as e:
         print("Unable to connect to the database:", e)
         return None
+    
+@app.route('/predict', methods=['POST'])
+@cross_origin() 
+def AI_predict():
+    try:
+        # Get the input text from the request
+        # input_text = request.json['text']
 
+        # Call the prediction function
+        prediction = predict(request)
+
+
+        # Return the predicted label as JSON response
+        return prediction
+    except Exception as e:
+        print(e)
+        return jsonify({'error': str(e)}), 500
 # Auth route to get JWT token
 @app.route('/login', methods=['POST'])
 def login():

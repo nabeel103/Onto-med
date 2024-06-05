@@ -16,14 +16,22 @@ urlpatterns = [
     path('login/', views.LoginView.as_view(), name='login'),
 
     path('patient/<int:patient_id>/', views.PatientProfileAPIView.as_view(), name='patient_profile'),
+    path('parient/', views.AllPatientProfileAPIView.as_view(), name='patient_profile'),
 
-    path('practitioner/<int:practitioner_id>/', views.PatientProfileAPIView.as_view(), name='patient_profile'),
+    path('practitioner/<int:practitioner_id>/', views.PractitionerProfileAPIView.as_view(), name='patient_profile'),
+    path('practitioner/', views.Full_PractitionerProfileAPIView.as_view(), name='patient_profile'),
+    # path('practitioner/', views.AllPractitionerProfileAPIView.as_view(), name='patient_profile'),
+
 
     path('diagnoses/', views.DiagnosisListCreateAPIView.as_view(), name='diagnosis-list-create'),
     path('diagnoses/<int:diagnosis_id>/', views.DiagnosisRetrieveUpdateDeleteAPIView.as_view(), name='diagnosis-detail'),
 
     path('diagnoses/concluded/', views.ConcludedDiagnosesListAPIView.as_view(), name='concluded-diagnoses-list'),
     path('diagnoses/non-concluded/', views.NonConcludedDiagnosesListAPIView.as_view(), name='non-concluded-diagnoses-list'),
+
+    path('mydiagnoses/<int:prac_id>/', views.MyDiagnosisPatients.as_view(), name='my-diagnosis-patients-list'),
+    path('myspecificdiagnoses/<int:diag_id>/', views.MySpecificDiagnosisPatients.as_view(), name='my-diagnosis-patients-list'),
+
 
     path('diseases/', views.DiseaseListCreateAPIView.as_view(), name='disease-list-create'),
     path('diseases/<int:diseaseid>/', views.DiseaseRetrieveUpdateDeleteAPIView.as_view(), name='disease-detail'),

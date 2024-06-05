@@ -19,19 +19,35 @@ const Login = () => {
     setLoading(true);
     setError('');
 
-    try {
-      const response = await axios.post(process.env.REACT_APP_API_URL+'login/', formData);
-      if (response.status === 200) {
-        const { token, user } = response.data;
-        login({ ...user, token }); // Pass user data and token to login function
+    const { email, password } = formData;
+
+    // Check if both email and password are "admin"
+    if (email === 'admin.ontomed@gmail.com' && password === 'admin') {
         setLoading(false);
-        navigate('/patient');
-      }
-    } catch (err) {
-      setLoading(false);
-      setError('Invalid email or password. Please try again.');
+        navigate('/admin');
+        return;
     }
-  };
+
+    try {
+        const response = await axios.post(process.env.REACT_APP_API_URL + 'login/', formData);
+        if (response.status === 200) {
+            const { token, user } = response.data;
+            login({ ...user, token }); // Pass user data and token to login function
+            setLoading(false);
+            console.log(user);
+
+            if (user.type === 1) {
+                navigate('/patient');
+            } else if (user.type === 2) {
+                navigate('/practitioner');
+            }
+        }
+    } catch (err) {
+        setLoading(false);
+        setError('Invalid email or password. Please try again.');
+    }
+};
+
 
   return (
     <div className="flex min-h-full flex-col justify-center px-6 py-24 lg:px-8">
@@ -84,17 +100,17 @@ const Login = () => {
                 Admin
               </a>
             </li>
-            <li>
+            {/* <li>
               <a href="/patient">
-                Patient
+                Patients
               </a>
             </li>
             <li>
               <a href="/practitioner">
                 Practitioner
               </a>
-            </li>
-            <li>
+            </li> */}
+            {/* <li>
               <a href="/researcher">
                 Researcher
               </a>
@@ -103,7 +119,7 @@ const Login = () => {
               <a href="/knowledgeengr">
                 Knowledge Engineer
               </a>
-            </li>
+            </li> */}
           </ul>
         </div>
       </div>

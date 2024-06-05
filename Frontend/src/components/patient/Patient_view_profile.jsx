@@ -26,7 +26,7 @@ const Patient_view_profile = () => {
           <h1 className='md:text-7xl sm:text-6xl text-4xl font-bold md:py-6 ml-3'>Users</h1>
           <h1 className='text-green-500 ml-3'>View User Profile</h1>
         </div>
-        <img className="h-20 my-auto rounded-full" src={images.person} alt="user" />
+        <img className="h-20 my-auto rounded-full" src={user.image} alt="user" />
       </div>
 
       <div className="grid gap-6 mb-6 md:grid-cols-2 max-w-[800px] mx-auto pl-3">

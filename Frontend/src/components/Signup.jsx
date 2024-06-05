@@ -23,8 +23,8 @@ const Signup = () => {
     blood_group: "",
     occupation: "",
     marital_status: "",
-    image: null,
   });
+  const [imageFile, setImageFile] = useState(null);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
   const [uploadProgress, setUploadProgress] = useState(0);
@@ -38,11 +38,10 @@ const Signup = () => {
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
+    setImageFile(file);
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        const binaryString = reader.result.split(",")[1];
-        setFormData({ ...formData, image: binaryString });
         setUploadProgress(100); // Simulate upload completion
       };
 
@@ -58,7 +57,7 @@ const Signup = () => {
   };
 
   const handleRemoveImage = () => {
-    setFormData({ ...formData, image: null });
+    setImageFile(null);
     setUploadProgress(0);
   };
 
@@ -129,10 +128,30 @@ const Signup = () => {
       return;
     }
 
+    const formDataToSubmit = new FormData();
+    for (const key in formData) {
+      formDataToSubmit.append(key, formData[key]);
+    }
+
+    if (imageFile) {
+      formDataToSubmit.append("image", imageFile);
+    }
+
     try {
       const response = await axios.post(
         process.env.REACT_APP_API_URL + "persons/",
-        formData
+        formDataToSubmit,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+          onUploadProgress: (progressEvent) => {
+            const percentCompleted = Math.round(
+              (progressEvent.loaded * 100) / progressEvent.total
+            );
+            setUploadProgress(percentCompleted);
+          },
+        }
       );
 
       if (response.status === 201) {
@@ -141,7 +160,7 @@ const Signup = () => {
 
         const loginResponse = await axios.post(
           process.env.REACT_APP_API_URL + "login/",
-          formData
+          { email: formData.email, password: formData.password }
         );
 
         if (loginResponse.status === 200) {
@@ -174,10 +193,9 @@ const Signup = () => {
         <h1 className="text-green-500 ml-3">Create a new account</h1>
       </div>
 
-      {error && <p className="text-red-500 ml-3">{error}</p>}
-      {success && <p className="text-green-500 ml-3">{success}</p>}
-
       <form className="max-w-[800px] mx-auto" onSubmit={handleSubmit}>
+        {error && <p className="text-red-500 ml-3">{error}</p>}
+        {success && <p className="text-green-500 ml-3">{success}</p>}
         <div className="grid gap-6 mb-6 md:grid-cols-2 px-3">
           <div>
             <label
