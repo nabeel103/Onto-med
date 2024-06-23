@@ -31,6 +31,7 @@ urlpatterns = [
 
     path('mydiagnoses/<int:prac_id>/', views.MyDiagnosisPatients.as_view(), name='my-diagnosis-patients-list'),
     path('myspecificdiagnoses/<int:diag_id>/', views.MySpecificDiagnosisPatients.as_view(), name='my-diagnosis-patients-list'),
+    path('specificPatientAllDiagnosis/<int:Patient_id>/', views.specificPatientAllDiagnosis.as_view(), name='my-diagnosis-patients-list'),
 
 
     path('diseases/', views.DiseaseListCreateAPIView.as_view(), name='disease-list-create'),

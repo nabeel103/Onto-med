@@ -354,6 +354,44 @@ class MySpecificDiagnosisPatients(APIView):
             print(e)
             return Response({'error': 'Error occurred'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+class specificPatientAllDiagnosis(APIView):
+    def get(self, request, Patient_id):
+        try:
+            # print("This is request")
+            diagnoses = Diagnoses.objects.filter(patient = Patient_id)
+            # print(diagnoses)
+            merged = []
+            for diagnosis in diagnoses:
+                patient = Patients.objects.filter(
+                    patientid=diagnosis.patient).first()
+                person = Person.objects.filter(personid=patient.patientid.personid).first()
+                print(person)
+
+                prac = Practitioners.objects.filter(practitionerid=diagnosis.practitioner).first()
+                # print(prac.practitionerid)
+                practitioner = Person.objects.filter(personid=prac.practitionerid.personid).first()
+
+                person_data = PersonSerializer(person)
+                practitioner_data = PersonSerializer(practitioner)
+                prac_data = PractitionersSerializer(prac)
+                patient_data = PatientsSerializer(patient)
+                diagnoses_data = DiagnosesSerializer(diagnosis)
+
+                merged_data = person_data.data.copy()
+                merged_data.update(patient_data.data)
+                merged_data.update(diagnoses_data.data)
+                merged_data.update(practitioner_data.data)
+                merged_data.update(prac_data.data)
+
+                merged.append(merged_data)
+
+                # print(merged_data)
+            
+            return Response(merged, status=status.HTTP_200_OK)   
+
+        except Exception as e:
+            print(e)
+            return Response({'error': 'Error occurred'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
 # APIS For Disease Model

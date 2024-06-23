@@ -89,7 +89,7 @@ function App() {
           <Route path="editcasedetail" element={<Practitioner_edit_case_detail/>} />
           <Route path="viewcases" element={<Practitioner_view_cases/>} />
           <Route path="viewrequests" element={<Practitioner_view_requests/>} />
-          <Route path="viewrequestdetail" element={<Practitioner_view_request_detail/>} />
+          <Route path="viewrequestdetail/*" element={<Practitioner_view_request_detail/>} />
           <Route path="viewreports" element={<Practitioner_view_reports/>} />
           <Route path="viewprofile" element={<Practitioner_view_profile/>} />
           <Route path="editprofile" element={<Practitioner_edit_profile/>} />

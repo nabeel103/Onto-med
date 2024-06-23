@@ -69,7 +69,7 @@ const Practitioner_view_requests = () => {
               console.log(diagnosis),
               <tr key={diagnosis.diagnosisid} className="dark:bg-black bg-white border-b dark:border-gray-900 border-gray-200 hover:dark:bg-gray-900">
                 <td className="px-6 py-4 text-right text-gray-600 hover:text-green-600">
-                  <Link to="/practitioner/viewrequestdetail"><AiFillInfoCircle/></Link>
+                  <Link to={"/practitioner/viewrequestdetail/" + diagnosis.diagnosisid }><AiFillInfoCircle/></Link>
                 </td>
                 <td className="px-6 py-4">{index + 1}</td>
                 <th scope="row" className="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
